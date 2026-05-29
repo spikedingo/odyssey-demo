@@ -19,6 +19,8 @@ export const orderStatusEnum = pgEnum('order_status', [
   'cancelled',
 ]);
 
+export const orderTypeEnum = pgEnum('order_type', ['dine_in', 'takeout', 'delivery']);
+
 export const settings = pgTable('settings', {
   id: serial('id').primaryKey(),
   restaurant_name: text('restaurant_name').notNull(),
@@ -65,6 +67,7 @@ export const orders = pgTable('orders', {
   id: serial('id').primaryKey(),
   customer_id: integer('customer_id').references(() => customers.id),
   status: orderStatusEnum('status').notNull().default('pending'),
+  order_type: orderTypeEnum('order_type').notNull().default('dine_in'),
   subtotal_cents: integer('subtotal_cents').notNull(),
   total_cents: integer('total_cents').notNull(),
   notes: text('notes'),
@@ -86,3 +89,4 @@ export const orderItems = pgTable('order_items', {
 });
 
 export type OrderStatus = (typeof orderStatusEnum.enumValues)[number];
+export type OrderType = (typeof orderTypeEnum.enumValues)[number];

@@ -39,6 +39,7 @@ export const OrderItemInputSchema = z.object({
 
 export const CreateOrderSchema = z.object({
   customer_id: z.number().int().positive().optional(),
+  order_type: z.enum(['dine_in', 'takeout', 'delivery']).default('dine_in'),
   items: z.array(OrderItemInputSchema).min(1),
   notes: z.string().max(500).optional(),
   total_cents: z.number().int().positive(),
@@ -89,6 +90,7 @@ export const ApiErrorSchema = z.object({
 export const OrderSummarySchema = z.object({
   id: z.number().int(),
   status: z.string(),
+  order_type: z.enum(['dine_in', 'takeout', 'delivery']),
   customer_name: z.string().nullable(),
   item_count: z.number().int(),
   total_cents: z.number().int(),
@@ -117,6 +119,7 @@ export const OrderDetailSchema = z.object({
     'completed',
     'cancelled',
   ]),
+  order_type: z.enum(['dine_in', 'takeout', 'delivery']),
   subtotal_cents: z.number().int(),
   total_cents: z.number().int(),
   notes: z.string().nullable(),

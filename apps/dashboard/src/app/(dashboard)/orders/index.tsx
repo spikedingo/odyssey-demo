@@ -14,15 +14,17 @@ import type {
   UpdateOrderStatusBodyStatus,
 } from '@odyssey/api-client';
 import { formatCents, formatDate } from '@odyssey/shared';
-import { getAvailableActions, ORDER_STATUS_LABELS, type OrderStatus } from '@odyssey/types';
+import { getAvailableActions, ORDER_STATUS_LABELS, ORDER_TYPE_LABELS, type OrderStatus, type OrderType } from '@odyssey/types';
 import {
   Badge,
   Button,
   DataTable,
   Drawer,
   ErrorState,
+  fontFamily,
   Input,
   Modal,
+  orderStatus,
   PageHeader,
   Select,
   useToast,
@@ -51,7 +53,9 @@ export default function OrdersPage() {
   const mounted = useMounted();
   const params = useLocalSearchParams<{ status?: string; search?: string }>();
 
-  const statusFilter = params.status?.split(',').filter(Boolean) ?? [];
+  const statusFilter = (params.status ?? '')
+    .split(',')
+    .filter((s): s is OrderStatus => ALL_STATUSES.includes(s as OrderStatus));
   const search = params.search ?? '';
 
   const { data: ordersResponse, isLoading, isError, refetch } = useListOrders(
@@ -100,7 +104,8 @@ export default function OrdersPage() {
     const next = statusFilter.includes(status)
       ? statusFilter.filter((s) => s !== status)
       : [...statusFilter, status];
-    router.setParams({ status: next.length ? next.join(',') : undefined });
+    // Expo Router stringifies `undefined` into the literal "undefined" in the URL.
+    router.setParams({ status: next.length ? next.join(',') : '' });
   };
 
   const applyStatus = async () => {
@@ -156,22 +161,32 @@ export default function OrdersPage() {
 
       <ScrollView horizontal style={{ marginBottom: 12 }}>
         <View style={styles.filters}>
-          {ALL_STATUSES.map((status) => (
-            <Pressable
-              key={status}
-              style={[styles.chip, statusFilter.includes(status) && styles.chipActive]}
-              onPress={() => toggleStatus(status)}
-            >
-              <Text>{ORDER_STATUS_LABELS[status]}</Text>
-            </Pressable>
-          ))}
+          {ALL_STATUSES.map((status) => {
+            const selected = statusFilter.includes(status);
+            const color = orderStatus[status];
+            return (
+              <Pressable
+                key={status}
+                style={[
+                  styles.chip,
+                  {
+                    backgroundColor: selected ? `${color}22` : '#ffffff',
+                    borderColor: selected ? color : `${color}55`,
+                  },
+                ]}
+                onPress={() => toggleStatus(status)}
+              >
+                <Text style={[styles.chipLabel, { color }]}>{ORDER_STATUS_LABELS[status]}</Text>
+              </Pressable>
+            );
+          })}
         </View>
       </ScrollView>
 
       <Input
         placeholder="Search by customer or order #"
         value={search}
-        onChangeText={(v) => router.setParams({ search: v || undefined })}
+        onChangeText={(v) => router.setParams({ search: v })}
       />
 
       {mounted && isError ? (
@@ -181,6 +196,18 @@ export default function OrdersPage() {
           columns={[
             { key: 'id', header: '#', flex: 0.4, render: (row) => <Text>#{row.id}</Text> },
             { key: 'customer', header: 'Customer', render: (row) => <Text>{row.customer_name ?? 'Walk-in'}</Text> },
+            {
+              key: 'type',
+              header: 'Type',
+              flex: 0.7,
+              render: (row) => (
+                <Badge
+                  label={ORDER_TYPE_LABELS[row.order_type as OrderType]}
+                  size="sm"
+                  variant="info"
+                />
+              ),
+            },
             { key: 'items', header: 'Items', flex: 0.5, render: (row) => <Text>{row.item_count}</Text> },
             { key: 'total', header: 'Total', flex: 0.7, render: (row) => <Text>{formatCents(row.total_cents)}</Text> },
             {
@@ -311,8 +338,8 @@ export default function OrdersPage() {
 
 const styles = StyleSheet.create({
   filters: { flexDirection: 'row', gap: 8, paddingBottom: 8 },
-  chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, borderWidth: 1, borderColor: '#d1cbc2' },
-  chipActive: { backgroundColor: '#d9edd9', borderColor: '#3d8f3d' },
+  chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, borderWidth: 1 },
+  chipLabel: { fontFamily: fontFamily.sansMedium, fontSize: 13 },
   menuRow: { marginBottom: 10 },
   actionRow: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 6 },
 });

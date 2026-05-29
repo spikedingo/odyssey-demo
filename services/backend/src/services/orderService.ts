@@ -4,7 +4,7 @@ import { and, count, desc, eq, gte, inArray, lt, sql } from 'drizzle-orm';
 
 import type { z } from 'zod';
 import { db } from '../db';
-import { customers, menuItems, orderItems, orders } from '../db/schema';
+import { customers, menuItems, orderItems, orders, settings } from '../db/schema';
 import type { CreateOrderSchema } from '../db/validators';
 import { ApiError } from '../middleware/errorHandler';
 
@@ -40,6 +40,7 @@ export async function fetchOrderDetail(orderId: number, conn: DbConn = db) {
     customer_id: order.customer_id,
     customer_name: customerName,
     status: order.status,
+    order_type: order.order_type,
     subtotal_cents: order.subtotal_cents,
     total_cents: order.total_cents,
     notes: order.notes,
@@ -57,6 +58,16 @@ export async function fetchOrderDetail(orderId: number, conn: DbConn = db) {
 }
 
 export async function createOrder(input: CreateOrderInput) {
+  const orderType = input.order_type ?? 'dine_in';
+
+  const [settingsRow] = await db.select().from(settings).limit(1);
+  if (settingsRow && !settingsRow.service_available) {
+    throw new ApiError(422, 'SERVICE_UNAVAILABLE', 'Restaurant is not accepting orders');
+  }
+  if (orderType === 'delivery' && settingsRow && !settingsRow.delivery_available) {
+    throw new ApiError(422, 'DELIVERY_UNAVAILABLE', 'Delivery is not available');
+  }
+
   const itemIds = input.items.map((i) => i.menu_item_id);
   const menuItemRows = await db.select().from(menuItems).where(inArray(menuItems.id, itemIds));
 
@@ -88,15 +99,18 @@ export async function createOrder(input: CreateOrderInput) {
     });
   }
 
+  const initialStatus = settingsRow?.auto_accept ? 'accepted' : 'pending';
+
   return db.transaction(async (tx) => {
     const [order] = await tx
       .insert(orders)
       .values({
         customer_id: input.customer_id ?? null,
+        order_type: orderType,
         subtotal_cents: computed,
         total_cents: computed,
         notes: input.notes ?? null,
-        status: 'pending',
+        status: initialStatus,
       })
       .returning();
 
@@ -180,6 +194,7 @@ export async function listOrders(filters: {
     .select({
       id: orders.id,
       status: orders.status,
+      order_type: orders.order_type,
       customer_name: customers.name,
       total_cents: orders.total_cents,
       created_at: orders.created_at,
@@ -198,6 +213,7 @@ export async function listOrders(filters: {
     data: orderRows.map((row) => ({
       id: row.id,
       status: row.status,
+      order_type: row.order_type,
       customer_name: row.customer_name,
       item_count: row.item_count,
       total_cents: row.total_cents,

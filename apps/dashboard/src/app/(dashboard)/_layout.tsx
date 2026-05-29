@@ -1,6 +1,6 @@
 import { Sidebar, useTheme, type SidebarItem } from '@odyssey/ui';
 import { Slot, usePathname, useRouter } from 'expo-router';
-import { BookOpen, Home, Settings, ShoppingBag, Users, UtensilsCrossed } from 'lucide-react-native';
+import { BookOpen, Home, Monitor, Settings, ShoppingBag, Users, UtensilsCrossed } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 const navItems: SidebarItem[] = [
@@ -8,6 +8,7 @@ const navItems: SidebarItem[] = [
   { label: 'Orders', href: '/orders', icon: ShoppingBag as SidebarItem['icon'] },
   { label: 'CRM', href: '/crm', icon: Users as SidebarItem['icon'] },
   { label: 'Menu', href: '/menu', icon: UtensilsCrossed as SidebarItem['icon'] },
+  { label: 'Order Terminal', href: '/pos', icon: Monitor as SidebarItem['icon'] },
   { label: 'Settings', href: '/settings', icon: Settings as SidebarItem['icon'] },
   { label: 'UI Library', href: '/ui-library', icon: BookOpen as SidebarItem['icon'] },
 ];

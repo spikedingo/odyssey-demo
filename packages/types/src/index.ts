@@ -7,6 +7,14 @@ export type OrderStatus =
   | 'completed'
   | 'cancelled';
 
+export type OrderType = 'dine_in' | 'takeout' | 'delivery';
+
+export const ORDER_TYPE_LABELS: Record<OrderType, string> = {
+  dine_in: 'Dine In',
+  takeout: 'Takeout',
+  delivery: 'Delivery',
+};
+
 export const ORDER_STATUS_LABELS: Record<OrderStatus, string> = {
   pending: 'Pending',
   accepted: 'Accepted',

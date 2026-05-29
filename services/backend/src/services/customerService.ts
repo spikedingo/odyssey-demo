@@ -90,6 +90,7 @@ export async function getCustomerDetail(id: number) {
     .select({
       id: orders.id,
       status: orders.status,
+      order_type: orders.order_type,
       customer_name: customers.name,
       total_cents: orders.total_cents,
       created_at: orders.created_at,
@@ -108,6 +109,7 @@ export async function getCustomerDetail(id: number) {
     recent_orders: recentOrderRows.map((row) => ({
       id: row.id,
       status: row.status,
+      order_type: row.order_type,
       customer_name: row.customer_name,
       item_count: row.item_count,
       total_cents: row.total_cents,

@@ -8,7 +8,7 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import { beforeEach, describe, expect, test } from 'vitest';
 
 import { db } from '../db';
-import { categories, menuItems } from '../db/schema';
+import { categories, menuItems, settings } from '../db/schema';
 import { InsertMenuItemSchema } from '../db/validators';
 import { ApiError } from '../middleware/errorHandler';
 import { getHomeSummary } from '../services/homeService';
@@ -31,6 +31,18 @@ async function seedItem(available = true, price_cents = 1000) {
   return item!;
 }
 
+async function seedSettings(overrides: Partial<typeof settings.$inferInsert> = {}) {
+  await db.insert(settings).values({
+    restaurant_name: 'Test Kitchen',
+    prep_time_minutes: 15,
+    auto_accept: false,
+    service_available: true,
+    delivery_available: true,
+    opening_hours: { mon: { open: '09:00', close: '22:00' } },
+    ...overrides,
+  });
+}
+
 beforeEach(async () => {
   await truncateAll();
 });
@@ -43,6 +55,7 @@ describe('createOrder', () => {
       total_cents: 2000,
     });
     expect(order.status).toBe('pending');
+    expect(order.order_type).toBe('dine_in');
     expect(order.total_cents).toBe(2000);
     expect(order.items[0]?.unit_price_cents).toBe(1000);
   });
@@ -69,6 +82,50 @@ describe('createOrder', () => {
     });
     await db.update(menuItems).set({ price_cents: 999 }).where(eq(menuItems.id, item.id));
     expect(order.items[0]?.unit_price_cents).toBe(500);
+  });
+
+  test('creates takeout order with order_type', async () => {
+    const item = await seedItem();
+    const order = await createOrder({
+      order_type: 'takeout',
+      items: [{ menu_item_id: item.id, quantity: 1 }],
+      total_cents: 1000,
+      notes: '[Pickup: Alice]',
+    });
+    expect(order.order_type).toBe('takeout');
+  });
+
+  test('rejects delivery when unavailable', async () => {
+    await seedSettings({ delivery_available: false });
+    const item = await seedItem();
+    await expect(
+      createOrder({
+        order_type: 'delivery',
+        items: [{ menu_item_id: item.id, quantity: 1 }],
+        total_cents: 1000,
+      }),
+    ).rejects.toMatchObject({ code: 'DELIVERY_UNAVAILABLE' });
+  });
+
+  test('rejects order when service unavailable', async () => {
+    await seedSettings({ service_available: false });
+    const item = await seedItem();
+    await expect(
+      createOrder({
+        items: [{ menu_item_id: item.id, quantity: 1 }],
+        total_cents: 1000,
+      }),
+    ).rejects.toMatchObject({ code: 'SERVICE_UNAVAILABLE' });
+  });
+
+  test('auto accepts when setting enabled', async () => {
+    await seedSettings({ auto_accept: true });
+    const item = await seedItem();
+    const order = await createOrder({
+      items: [{ menu_item_id: item.id, quantity: 1 }],
+      total_cents: 1000,
+    });
+    expect(order.status).toBe('accepted');
   });
 });
 

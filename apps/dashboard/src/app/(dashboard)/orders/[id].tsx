@@ -1,7 +1,7 @@
 import type { GetOrder200, UpdateOrderStatusBodyStatus } from '@odyssey/api-client';
 import { useGetOrder, useUpdateOrderStatus } from '@odyssey/api-client';
 import { formatCents, formatDate } from '@odyssey/shared';
-import { getAvailableActions, ORDER_STATUS_LABELS, type OrderStatus } from '@odyssey/types';
+import { getAvailableActions, ORDER_STATUS_LABELS, ORDER_TYPE_LABELS, type OrderStatus, type OrderType } from '@odyssey/types';
 import {
   Badge,
   Button,
@@ -63,6 +63,10 @@ export default function OrderDetailPage() {
         <View style={styles.row}>
           <Text style={styles.label}>Status</Text>
           <Badge label={ORDER_STATUS_LABELS[status]} orderStatus={status} variant="order-status" />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Type</Text>
+          <Badge label={ORDER_TYPE_LABELS[data.order_type as OrderType]} variant="info" />
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Customer</Text>
