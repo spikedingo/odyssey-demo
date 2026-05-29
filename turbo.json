@@ -1,0 +1,46 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "build:openapi": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": ["../../openapi.json"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "generate": {
+      "dependsOn": ["^build"],
+      "outputs": ["src/generated/**"]
+    },
+    "lint": {},
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "db:setup-test": {
+      "cache": false
+    },
+    "seed": {
+      "cache": false,
+      "dependsOn": ["db:migrate"]
+    },
+    "deploy": {
+      "cache": false
+    },
+    "export": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    }
+  }
+}

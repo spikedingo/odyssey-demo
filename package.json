@@ -1,0 +1,41 @@
+{
+  "name": "odyssey-restaurant",
+  "private": true,
+  "scripts": {
+    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "dev:backend": "turbo run dev --filter=backend",
+    "gen:contract": "turbo run build:openapi --filter=backend && pnpm --filter=@odyssey/api-client generate && pnpm --filter=@odyssey/api-client typecheck",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:backend": "turbo run test --filter=backend",
+    "test:frontend": "turbo run test --filter=dashboard",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "turbo run db:migrate --filter=backend",
+    "db:setup-test": "turbo run db:setup-test --filter=backend",
+    "seed": "turbo run seed --filter=backend",
+    "deploy:backend": "turbo run deploy --filter=backend",
+    "deploy:frontend": "turbo run export --filter=dashboard",
+    "deploy": "pnpm deploy:backend && pnpm deploy:frontend"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "overrides": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-test-renderer": "18.2.0"
+    }
+  }
+}

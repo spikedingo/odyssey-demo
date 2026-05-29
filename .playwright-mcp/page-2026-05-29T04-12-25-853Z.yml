@@ -1,0 +1,125 @@
+- generic [ref=e2]:
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: Odyssey
+      - generic [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+        - generic [ref=e16]: Home
+      - generic [ref=e17] [cursor=pointer]:
+        - img [ref=e18]
+        - generic [ref=e21]: Orders
+      - generic [ref=e22] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e28]: CRM
+      - generic [ref=e29] [cursor=pointer]:
+        - img [ref=e30]
+        - generic [ref=e35]: Menu
+      - generic [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e40]: Settings
+      - generic [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e44]: UI Library
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - generic [ref=e49]: Menu
+          - generic [ref=e50]: Manage categories and items
+        - generic [ref=e52] [cursor=pointer]: Add Item
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]: Name
+          - generic [ref=e56]: Price
+          - generic [ref=e57]: Available
+        - generic [ref=e58]:
+          - generic:
+            - generic [ref=e60]: Beef Ramen
+            - generic [ref=e62]: $16.50
+            - generic [ref=e65]: Available
+            - generic [ref=e67]:
+              - generic [ref=e69] [cursor=pointer]: Edit
+              - generic [ref=e71] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e73]: Chicken Katsu
+            - generic [ref=e75]: $18.50
+            - generic [ref=e78]: Available
+            - generic [ref=e80]:
+              - generic [ref=e82] [cursor=pointer]: Edit
+              - generic [ref=e84] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e86]: Edamame
+            - generic [ref=e88]: $6.50
+            - generic [ref=e91]: Available
+            - generic [ref=e93]:
+              - generic [ref=e95] [cursor=pointer]: Edit
+              - generic [ref=e97] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e99]: Green Tea
+            - generic [ref=e101]: $3.50
+            - generic [ref=e104]: Available
+            - generic [ref=e106]:
+              - generic [ref=e108] [cursor=pointer]: Edit
+              - generic [ref=e110] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e112]: Gyoza
+            - generic [ref=e114]: $9.50
+            - generic [ref=e117]: Available
+            - generic [ref=e119]:
+              - generic [ref=e121] [cursor=pointer]: Edit
+              - generic [ref=e123] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e125]: Matcha Latte
+            - generic [ref=e127]: $6.50
+            - generic [ref=e130]: Available
+            - generic [ref=e132]:
+              - generic [ref=e134] [cursor=pointer]: Edit
+              - generic [ref=e136] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e138]: Miso Soup
+            - generic [ref=e140]: $4.50
+            - generic [ref=e143]: Available
+            - generic [ref=e145]:
+              - generic [ref=e147] [cursor=pointer]: Edit
+              - generic [ref=e149] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e151]: Sake Flight
+            - generic [ref=e153]: $18.00
+            - generic [ref=e156]: Available
+            - generic [ref=e158]:
+              - generic [ref=e160] [cursor=pointer]: Edit
+              - generic [ref=e162] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e164]: Salmon Teriyaki
+            - generic [ref=e166]: $24.50
+            - generic [ref=e169]: Available
+            - generic [ref=e171]:
+              - generic [ref=e173] [cursor=pointer]: Edit
+              - generic [ref=e175] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e177]: Seaweed Salad
+            - generic [ref=e179]: $7.50
+            - generic [ref=e182]: Unavailable
+            - generic [ref=e184]:
+              - generic [ref=e186] [cursor=pointer]: Edit
+              - generic [ref=e188] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e190]: Vegetable Curry
+            - generic [ref=e192]: $14.50
+            - generic [ref=e195]: Available
+            - generic [ref=e197]:
+              - generic [ref=e199] [cursor=pointer]: Edit
+              - generic [ref=e201] [cursor=pointer]: Delete
+          - generic:
+            - generic [ref=e203]: Yuzu Soda
+            - generic [ref=e205]: $5.50
+            - generic [ref=e208]: Available
+            - generic [ref=e210]:
+              - generic [ref=e212] [cursor=pointer]: Edit
+              - generic [ref=e214] [cursor=pointer]: Delete
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic: Refreshing...
+        - generic:
+          - generic: Don't see your changes? Reload the app

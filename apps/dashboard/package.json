@@ -1,0 +1,49 @@
+{
+  "name": "dashboard",
+  "version": "0.0.1",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start --web",
+    "build": "expo export --platform web",
+    "export": "expo export --platform web --output-dir dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.26.0",
+    "@expo-google-fonts/inter": "^0.2.3",
+    "@odyssey/api-client": "workspace:*",
+    "@odyssey/shared": "workspace:*",
+    "@odyssey/types": "workspace:*",
+    "@odyssey/ui": "workspace:*",
+    "@react-native/assets-registry": "0.74.87",
+    "@tanstack/react-query": "^5.62.8",
+    "expo": "~51.0.39",
+    "expo-font": "~12.0.10",
+    "expo-router": "~3.5.23",
+    "expo-status-bar": "~1.12.1",
+    "lucide-react-native": "^0.468.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-safe-area-context": "4.10.5",
+    "react-native-screens": "3.31.1",
+    "react-native-svg": "15.2.0",
+    "react-native-web": "~0.19.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@testing-library/react-native": "^12.9.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "~18.2.79",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "jest": "^29.7.0",
+    "jest-expo": "~51.0.4",
+    "react-test-renderer": "18.2.0",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5.7.2"
+  }
+}

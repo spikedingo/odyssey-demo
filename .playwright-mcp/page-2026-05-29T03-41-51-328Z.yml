@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: Odyssey
+      - generic [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+        - generic [ref=e16]: Home
+      - generic [ref=e17] [cursor=pointer]:
+        - img [ref=e18]
+        - generic [ref=e21]: Orders
+      - generic [ref=e22] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e28]: CRM
+      - generic [ref=e29] [cursor=pointer]:
+        - img [ref=e30]
+        - generic [ref=e35]: Menu
+      - generic [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e40]: Settings
+      - generic [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e44]: UI Library
+    - generic [ref=e46]:
+      - generic [ref=e48]:
+        - generic [ref=e49]: CRM
+        - generic [ref=e50]: Customer relationships
+      - generic [ref=e52]:
+        - img [ref=e53]
+        - textbox "Search customers" [ref=e56]
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: Name
+          - generic [ref=e62]: Email
+          - generic [ref=e63]: Orders
+          - generic [ref=e64]: Lifetime Spend
+        - generic [ref=e65] [cursor=pointer]:
+          - generic [ref=e67]: Alice Chen
+          - generic [ref=e69]: alice@example.com
+          - generic [ref=e71]: "2"
+          - generic [ref=e73]: $80.50
+        - generic [ref=e74] [cursor=pointer]:
+          - generic [ref=e76]: Bob Martinez
+          - generic [ref=e78]: bob@example.com
+          - generic [ref=e80]: "3"
+          - generic [ref=e82]: $161.50
+        - generic [ref=e83] [cursor=pointer]:
+          - generic [ref=e85]: Carol Williams
+          - generic [ref=e87]: carol@example.com
+          - generic [ref=e89]: "2"
+          - generic [ref=e91]: $66.50
+        - generic [ref=e92] [cursor=pointer]:
+          - generic [ref=e94]: David Kim
+          - generic [ref=e96]: david@example.com
+          - generic [ref=e98]: "3"
+          - generic [ref=e100]: $109.00
+        - generic [ref=e101] [cursor=pointer]:
+          - generic [ref=e103]: Eva Johnson
+          - generic [ref=e105]: eva@example.com
+          - generic [ref=e107]: "2"
+          - generic [ref=e109]: $77.50
+        - generic [ref=e110] [cursor=pointer]:
+          - generic [ref=e112]: Frank Lopez
+          - generic [ref=e114]: frank@example.com
+          - generic [ref=e116]: "1"
+          - generic [ref=e118]: $68.00
+        - generic [ref=e119] [cursor=pointer]:
+          - generic [ref=e121]: Grace Park
+          - generic [ref=e123]: grace@example.com
+          - generic [ref=e125]: "2"
+          - generic [ref=e127]: $66.50
+        - generic [ref=e128] [cursor=pointer]:
+          - generic [ref=e130]: Henry Davis
+          - generic [ref=e132]: henry@example.com
+          - generic [ref=e134]: "1"
+          - generic [ref=e136]: $40.00
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic: Refreshing...
+        - generic:
+          - generic: Don't see your changes? Reload the app

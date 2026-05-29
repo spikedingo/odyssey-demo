@@ -1,0 +1,191 @@
+- generic [ref=e2]:
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: Odyssey
+      - generic [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+        - generic [ref=e16]: Home
+      - generic [ref=e17] [cursor=pointer]:
+        - img [ref=e18]
+        - generic [ref=e21]: Orders
+      - generic [ref=e22] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e28]: CRM
+      - generic [ref=e29] [cursor=pointer]:
+        - img [ref=e30]
+        - generic [ref=e35]: Menu
+      - generic [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e40]: Settings
+      - generic [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e44]: UI Library
+    - generic [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e50]: Orders
+        - generic [ref=e52] [cursor=pointer]: New Order
+      - generic [ref=e55]:
+        - generic [ref=e57] [cursor=pointer]: Pending
+        - generic [ref=e59] [cursor=pointer]: Accepted
+        - generic [ref=e61] [cursor=pointer]: Preparing
+        - generic [ref=e63] [cursor=pointer]: Ready
+        - generic [ref=e65] [cursor=pointer]: Out for Delivery
+        - generic [ref=e67] [cursor=pointer]: Completed
+        - generic [ref=e69] [cursor=pointer]: Cancelled
+      - 'textbox "Search by customer or order #" [ref=e72]'
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: "#"
+          - generic [ref=e76]: Customer
+          - generic [ref=e77]: Items
+          - generic [ref=e78]: Total
+          - generic [ref=e79]: Status
+          - generic [ref=e80]: Created
+        - generic [ref=e81]:
+          - generic [ref=e82] [cursor=pointer]:
+            - generic [ref=e84]: "#1"
+            - generic [ref=e86]: Walk-in
+            - generic [ref=e88]: "2"
+            - generic [ref=e90]: $14.00
+            - generic [ref=e93]: Pending
+            - generic [ref=e95]: May 29, 2026, 11:11 AM
+          - generic [ref=e96] [cursor=pointer]:
+            - generic [ref=e98]: "#2"
+            - generic [ref=e100]: Bob Martinez
+            - generic [ref=e102]: "2"
+            - generic [ref=e104]: $68.00
+            - generic [ref=e107]: Accepted
+            - generic [ref=e109]: May 28, 2026, 10:11 AM
+          - generic [ref=e110] [cursor=pointer]:
+            - generic [ref=e112]: "#3"
+            - generic [ref=e114]: Carol Williams
+            - generic [ref=e116]: "2"
+            - generic [ref=e118]: $32.00
+            - generic [ref=e121]: Preparing
+            - generic [ref=e123]: May 27, 2026, 9:11 AM
+          - generic [ref=e124] [cursor=pointer]:
+            - generic [ref=e126]: "#4"
+            - generic [ref=e128]: David Kim
+            - generic [ref=e130]: "2"
+            - generic [ref=e132]: $40.50
+            - generic [ref=e135]: Ready
+            - generic [ref=e137]: May 26, 2026, 8:11 AM
+          - generic [ref=e138] [cursor=pointer]:
+            - generic [ref=e140]: "#5"
+            - generic [ref=e142]: Eva Johnson
+            - generic [ref=e144]: "2"
+            - generic [ref=e146]: $63.50
+            - generic [ref=e149]: Out for Delivery
+            - generic [ref=e151]: May 25, 2026, 7:11 AM
+          - generic [ref=e152] [cursor=pointer]:
+            - generic [ref=e154]: "#6"
+            - generic [ref=e156]: Walk-in
+            - generic [ref=e158]: "2"
+            - generic [ref=e160]: $62.50
+            - generic [ref=e163]: Completed
+            - generic [ref=e165]: May 24, 2026, 6:11 AM
+          - generic [ref=e166] [cursor=pointer]:
+            - generic [ref=e168]: "#7"
+            - generic [ref=e170]: Grace Park
+            - generic [ref=e172]: "2"
+            - generic [ref=e174]: $34.50
+            - generic [ref=e177]: Cancelled
+            - generic [ref=e179]: May 23, 2026, 5:11 AM
+          - generic [ref=e180] [cursor=pointer]:
+            - generic [ref=e182]: "#8"
+            - generic [ref=e184]: Henry Davis
+            - generic [ref=e186]: "2"
+            - generic [ref=e188]: $40.00
+            - generic [ref=e191]: Pending
+            - generic [ref=e193]: May 22, 2026, 4:11 AM
+          - generic [ref=e194] [cursor=pointer]:
+            - generic [ref=e196]: "#9"
+            - generic [ref=e198]: Alice Chen
+            - generic [ref=e200]: "2"
+            - generic [ref=e202]: $17.00
+            - generic [ref=e205]: Accepted
+            - generic [ref=e207]: May 21, 2026, 3:11 AM
+          - generic [ref=e208] [cursor=pointer]:
+            - generic [ref=e210]: "#10"
+            - generic [ref=e212]: Bob Martinez
+            - generic [ref=e214]: "2"
+            - generic [ref=e216]: $31.00
+            - generic [ref=e219]: Preparing
+            - generic [ref=e221]: May 20, 2026, 2:11 AM
+          - generic [ref=e222] [cursor=pointer]:
+            - generic [ref=e224]: "#11"
+            - generic [ref=e226]: Walk-in
+            - generic [ref=e228]: "2"
+            - generic [ref=e230]: $20.50
+            - generic [ref=e233]: Ready
+            - generic [ref=e235]: May 19, 2026, 1:11 AM
+          - generic [ref=e236] [cursor=pointer]:
+            - generic [ref=e238]: "#12"
+            - generic [ref=e240]: David Kim
+            - generic [ref=e242]: "2"
+            - generic [ref=e244]: $28.50
+            - generic [ref=e247]: Out for Delivery
+            - generic [ref=e249]: May 18, 2026, 12:11 AM
+          - generic [ref=e250] [cursor=pointer]:
+            - generic [ref=e252]: "#13"
+            - generic [ref=e254]: Eva Johnson
+            - generic [ref=e256]: "2"
+            - generic [ref=e258]: $14.00
+            - generic [ref=e261]: Completed
+            - generic [ref=e263]: May 16, 2026, 11:11 PM
+          - generic [ref=e264] [cursor=pointer]:
+            - generic [ref=e266]: "#14"
+            - generic [ref=e268]: Frank Lopez
+            - generic [ref=e270]: "2"
+            - generic [ref=e272]: $68.00
+            - generic [ref=e275]: Cancelled
+            - generic [ref=e277]: May 15, 2026, 10:11 PM
+          - generic [ref=e278] [cursor=pointer]:
+            - generic [ref=e280]: "#15"
+            - generic [ref=e282]: Grace Park
+            - generic [ref=e284]: "2"
+            - generic [ref=e286]: $32.00
+            - generic [ref=e289]: Pending
+            - generic [ref=e291]: May 14, 2026, 9:11 PM
+          - generic [ref=e292] [cursor=pointer]:
+            - generic [ref=e294]: "#16"
+            - generic [ref=e296]: Walk-in
+            - generic [ref=e298]: "2"
+            - generic [ref=e300]: $40.50
+            - generic [ref=e303]: Accepted
+            - generic [ref=e305]: May 13, 2026, 8:11 PM
+          - generic [ref=e306] [cursor=pointer]:
+            - generic [ref=e308]: "#17"
+            - generic [ref=e310]: Alice Chen
+            - generic [ref=e312]: "2"
+            - generic [ref=e314]: $63.50
+            - generic [ref=e317]: Preparing
+            - generic [ref=e319]: May 12, 2026, 7:11 PM
+          - generic [ref=e320] [cursor=pointer]:
+            - generic [ref=e322]: "#18"
+            - generic [ref=e324]: Bob Martinez
+            - generic [ref=e326]: "2"
+            - generic [ref=e328]: $62.50
+            - generic [ref=e331]: Ready
+            - generic [ref=e333]: May 11, 2026, 6:11 PM
+          - generic [ref=e334] [cursor=pointer]:
+            - generic [ref=e336]: "#19"
+            - generic [ref=e338]: Carol Williams
+            - generic [ref=e340]: "2"
+            - generic [ref=e342]: $34.50
+            - generic [ref=e345]: Out for Delivery
+            - generic [ref=e347]: May 10, 2026, 5:11 PM
+          - generic [ref=e348] [cursor=pointer]:
+            - generic [ref=e350]: "#20"
+            - generic [ref=e352]: David Kim
+            - generic [ref=e354]: "2"
+            - generic [ref=e356]: $40.00
+            - generic [ref=e359]: Completed
+            - generic [ref=e361]: May 9, 2026, 4:11 PM
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic: Refreshing...
+        - generic:
+          - generic: Don't see your changes? Reload the app

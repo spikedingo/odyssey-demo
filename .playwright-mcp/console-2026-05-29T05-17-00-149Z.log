@@ -1,0 +1,281 @@
+[     606ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:37584
+[     626ms] [LOG] Running application "main" with appParams:
+ {rootTag: #root, hydrate: false} 
+Development-level warnings: ON.
+Performance optimizations: OFF. @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:52208
+[     717ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: http://localhost:8081/assets/?unstable_path=.%2F..%2F..%2Fnode_modules%2F.pnpm%2F%40expo-google-fonts%2Binter%400.2.3%2Fnode_modules%2F%40expo-google-fonts%2Finter%2FInter_400Regular.ttf&platform=web&hash=079af0e2936ccb99b391ddc0bbb73dcb @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:64487
+[     718ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: http://localhost:8081/assets/?unstable_path=.%2F..%2F..%2Fnode_modules%2F.pnpm%2F%40expo-google-fonts%2Binter%400.2.3%2Fnode_modules%2F%40expo-google-fonts%2Finter%2FInter_500Medium.ttf&platform=web&hash=ed533866b5c83114c7dddbcbc2288b19 @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:64487
+[     718ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: http://localhost:8081/assets/?unstable_path=.%2F..%2F..%2Fnode_modules%2F.pnpm%2F%40expo-google-fonts%2Binter%400.2.3%2Fnode_modules%2F%40expo-google-fonts%2Finter%2FInter_600SemiBold.ttf&platform=web&hash=07a48beb92b401297a76ff9f6aedd0ed @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:64487
+[     718ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: http://localhost:8081/assets/?unstable_path=.%2F..%2F..%2Fnode_modules%2F.pnpm%2F%40expo-google-fonts%2Binter%400.2.3%2Fnode_modules%2F%40expo-google-fonts%2Finter%2FInter_700Bold.ttf&platform=web&hash=275bfea5dc74c33f51916fee80feae67 @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:64487
+[     741ms] [WARNING] Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:47368
+[     784ms] [WARNING] "shadow*" style props are deprecated. Use "boxShadow". @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:10991
+[   95261ms] [WARNING] props.pointerEvents is deprecated. Use style.pointerEvents @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:10991
+[  163799ms] ReferenceError: MenuItemImage is not defined
+    at eval (http:src/app/(dashboard)/orders/index.bundle//&platform=web&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:368:62)
+    at Array.map (<anonymous>)
+    at OrdersPage (http:src/app/(dashboard)/orders/index.bundle//&platform=web&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:366:29)
+    at renderWithHooks (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:25994:24)
+    at updateFunctionComponent (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:28879:26)
+    at beginWork (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:30591:22)
+    at HTMLUnknownElement.callCallback (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15590:20)
+    at Object.invokeGuardedCallbackDev (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15634:22)
+    at invokeGuardedCallback (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15691:37)
+    at beginWork$1 (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:35560:13)
+    at performUnitOfWork (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34808:18)
+    at workLoopSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34731:11)
+    at renderRootSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34704:13)
+    at performSyncWorkOnRoot (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34396:26)
+    at flushSyncCallbacks (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:22427:28)
+    at flushSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34500:13)
+    at Object.scheduleRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:35851:11)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4533:23
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4525:32)
+    at Object.performReactRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4293:27)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:430:21
+[  163803ms] ReferenceError: MenuItemImage is not defined
+    at eval (http:src/app/(dashboard)/orders/index.bundle//&platform=web&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:368:62)
+    at Array.map (<anonymous>)
+    at OrdersPage (http:src/app/(dashboard)/orders/index.bundle//&platform=web&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:366:29)
+    at renderWithHooks (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:25994:24)
+    at updateFunctionComponent (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:28879:26)
+    at beginWork (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:30591:22)
+    at HTMLUnknownElement.callCallback (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15590:20)
+    at Object.invokeGuardedCallbackDev (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15634:22)
+    at invokeGuardedCallback (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:15691:37)
+    at beginWork$1 (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:35560:13)
+    at performUnitOfWork (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34808:18)
+    at workLoopSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34731:11)
+    at renderRootSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34704:13)
+    at recoverFromConcurrentError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34196:26)
+    at performSyncWorkOnRoot (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34405:26)
+    at flushSyncCallbacks (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:22427:28)
+    at flushSync (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:34500:13)
+    at Object.scheduleRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:35851:11)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4533:23
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4525:32)
+    at Object.performReactRefresh (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:4293:27)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:430:21
+[  163805ms] [ERROR] The above error occurred in the <OrdersPage> component:
+
+    at OrdersPage (http:src/app/(dashboard)/orders/index.bundle//&platform=web&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:26:46)
+    at Suspense
+    at Route (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:68891:5)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:69254:11
+    at StaticContainer (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182842:18)
+    at EnsureSingleNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:180391:7)
+    at SceneView (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182760:7)
+    at QualifiedSlot (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:75675:12)
+    at PreventRemoveProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:181853:7)
+    at NavigationContent (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182558:7)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182575:9
+    at QualifiedNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:75585:5)
+    at Navigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:75551:5)
+    at Slot (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:75650:50)
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at DashboardLayout (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:65505:46)
+    at Suspense
+    at Route (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:68891:5)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:69254:11
+    at StaticContainer (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182842:18)
+    at EnsureSingleNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:180391:7)
+    at SceneView (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182760:7)
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at Background (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:185010:9)
+    at Screen (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:186549:73)
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at SafeAreaProviderCompat (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:186443:7)
+    at NativeStackView (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:184693:7)
+    at PreventRemoveProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:181853:7)
+    at NavigationContent (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182558:7)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:182575:9
+    at NativeStackNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:178456:9)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:68779:21
+    at ToastProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:67706:5)
+    at DensityProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:66146:5)
+    at ThemeProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:66094:5)
+    at QueryClientProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:284722:5)
+    at RootLayout (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:84242:58)
+    at Suspense
+    at Route (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:68891:5)
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:69254:11
+    at div
+    at http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:39362:27
+    at NativeSafeAreaProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:185539:5)
+    at SafeAreaProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:185410:9)
+    at wrapper (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:76787:7)
+    at EnsureSingleNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:180391:7)
+    at BaseNavigationContainer (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:179075:7)
+    at ThemeProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:183793:7)
+    at NavigationContainerInner (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:77040:9)
+    at ContextNavigator (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:76822:5)
+    at ExpoRoot (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:76778:18)
+    at _HelmetProvider (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:285675:7)
+    at App
+    at LogBoxStateSubscription (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:58460:5)
+    at ErrorOverlay
+    at withDevTools(ErrorOverlay)
+    at AppContainer (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:52293:5)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, LogBoxStateSubscription. @ http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:58088
+[  163812ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:8081/symbolicate:0
+[  163819ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:8081/symbolicate:0
+[  163819ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:8081/symbolicate:0
+[  163819ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:8081/symbolicate:0
+[  171200ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  171206ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  172237ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  172298ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  174156ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  174216ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  216738ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  216846ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  218924ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  219069ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
+[  248328ms] Error: TransformError SyntaxError: /Users/spikedingo/odyssey-demo/apps/dashboard/src/app/(dashboard)/menu/index.tsx: Identifier 'MenuItemImage' has already been declared. (28:9)
+
+  26 |
+  27 | import { MenuItemImage } from '@/components/MenuItemImage';
+> 28 | import { MenuItemImage } from '@/components/MenuItemImage';
+     |          ^
+  29 | import { useMounted } from '@/hooks/useMounted';
+  30 | import { unwrap } from '@/utils/api';
+  31 |
+    at showCompileError (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5199:19)
+    at HMRClient.<anonymous> (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:5124:13)
+    at HMRClient.emit (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:62133:31)
+    at HMRClient._ws.onmessage (http://localhost:8081/node_modules/.pnpm/expo-router@3.5.24_3axwndiwrgahpmaxumyvlzjpji/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=src%2Fapp&resolver.environment=client&transform.environment=client:61948:18)
