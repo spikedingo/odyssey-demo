@@ -4,6 +4,10 @@ Fullstack restaurant operations product — POS ordering, staff dashboard, and b
 
 **Repository:** https://github.com/spikedingo/odyssey-demo
 
+![POS Order Terminal on iPad — Sakura Garden tablet layout](docs/screenshots/pos-tablet-ipad.png)
+
+*POS Order Terminal (`/`) on iPad — responsive tablet layout with category tabs, menu grid, and cart sidebar.*
+
 ---
 
 ## What This Project Is
@@ -18,7 +22,15 @@ Fullstack restaurant operations product — POS ordering, staff dashboard, and b
 
 ### Platform
 
-This submission targets **Expo Web** (React Native Web). A native iOS/Android app is **not implemented yet**, but the entire frontend lives in `apps/dashboard` on **Expo + Expo Router + React Native** — the same codebase can be extended to native builds (`expo run:ios` / `expo run:android`) with minimal structural changes.
+One **Expo + Expo Router + React Native** app (`apps/dashboard`) ships:
+
+| Target | Command | Notes |
+|---|---|---|
+| **Web (H5)** | `pnpm dev:dashboard` | React Native Web at http://localhost:8081 |
+| **iOS** | `pnpm --filter=dashboard dev:ios` | Simulator or device via Expo Go / dev client |
+| **Android** | `pnpm --filter=dashboard dev:android` | Emulator or device |
+
+Layouts adapt by breakpoint: phone (top bar + drawer), tablet (icon rail + split POS), desktop (full sidebar).
 
 ---
 
@@ -109,6 +121,63 @@ pnpm dev:dashboard  # terminal 2 → http://localhost:8081
 - POS ordering: http://localhost:8081/
 - Staff dashboard: http://localhost:8081/home
 
+### First clone — run the app (iOS / Android / tablet)
+
+The mobile app needs the **same backend + env setup** as web. Do this once after clone:
+
+```bash
+git clone https://github.com/spikedingo/odyssey-demo.git
+cd odyssey-demo
+
+# One-shot bootstrap (install, .env, Postgres, migrate, seed, API client)
+pnpm setup:local
+pnpm verify:local
+```
+
+Then use **two terminals**:
+
+```bash
+# Terminal 1 — API (required; POS loads menu from here)
+pnpm dev:backend
+```
+
+```bash
+# Terminal 2 — Expo dev server + native target
+pnpm --filter=dashboard dev:ios      # Xcode Simulator or Expo Go on device
+# or
+pnpm --filter=dashboard dev:android  # Android emulator or device
+```
+
+From the Expo CLI you can also press **`i`** (iOS) / **`a`** (Android) after `pnpm dev:dashboard:native` (plain `expo start`).
+
+**`apps/dashboard/.env`** (created from `.env.example` during setup):
+
+| Variable | Simulator / emulator | Physical device on Wi‑Fi |
+|---|---|---|
+| `EXPO_PUBLIC_API_BASE_URL` | `http://localhost:8787` | `http://<your-lan-ip>:8787` (e.g. `http://192.168.1.10:8787`) |
+
+`localhost` on a phone/tablet points at the device itself, not your Mac — use your machine’s LAN IP when testing on hardware.
+
+**Prerequisites for native:**
+
+| Platform | Install |
+|---|---|
+| **iOS** | [Xcode](https://developer.apple.com/xcode/) + iOS Simulator (or Expo Go from the App Store) |
+| **Android** | [Android Studio](https://developer.android.com/studio) + emulator, or Expo Go |
+
+**If Metro mis-resolves packages or shows a stale bundle:**
+
+```bash
+cd apps/dashboard
+pnpm exec expo start --clear
+```
+
+If port **8081** is busy, Expo picks another port (e.g. 8082) — use the URL shown in the terminal.
+
+**Routes on device:** app opens at **`/`** (POS). Staff dashboard: navigate to **`/home`** (tablet/desktop sidebar or phone menu drawer).
+
+Full clone guide (Neon, troubleshooting, contract regen): [SETUP_FROM_CLONE.md](SETUP_FROM_CLONE.md)
+
 ---
 
 ## Seed Data
@@ -138,6 +207,9 @@ Order timestamps are relative to seed execution time, so Home KPI "today/yesterd
 | Script | Description |
 |---|---|
 | `pnpm dev:dashboard` | Start Expo web app (:8081) |
+| `pnpm dev:dashboard:native` | `expo start` — choose iOS/Android from CLI |
+| `pnpm --filter=dashboard dev:ios` | Expo + iOS Simulator / device |
+| `pnpm --filter=dashboard dev:android` | Expo + Android emulator / device |
 | `pnpm dev:backend` | Start Hono/Wrangler dev server (:8787) |
 | `pnpm gen:contract` | Export OpenAPI + regenerate `@odyssey/api-client` |
 | `pnpm db:up` / `pnpm db:down` | Start/stop Docker Postgres |
@@ -217,7 +289,7 @@ Full ADRs in [`specs/06-deployment-delivery/spec.md`](specs/06-deployment-delive
 
 | Area | Status |
 |---|---|
-| **Native app** | Not shipped — web-only demo; Expo codebase is native-ready (see [Platform](#platform)) |
+| **Native builds** | Dev via Expo Go / `expo start`; no store-signed `expo run:ios` release pipeline in repo |
 | **Authentication** | None (ADR-005) |
 | **Settings — opening hours UI** | Data seeded in backend; no edit UI yet |
 | **CRM — add customer** | Backend API exists; no create entry in list UI |
