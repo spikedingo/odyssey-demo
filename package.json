@@ -15,6 +15,9 @@
     "db:migrate": "turbo run db:migrate --filter=backend",
     "db:setup-test": "turbo run db:setup-test --filter=backend",
     "seed": "turbo run seed --filter=backend",
+    "setup:local": "bash .cursor/skills/odyssey-local-setup/scripts/setup.sh",
+    "verify:local": "bash .cursor/skills/odyssey-local-setup/scripts/verify.sh",
+    "reset:local": "bash .cursor/skills/odyssey-local-setup/scripts/reset.sh",
     "deploy:backend": "turbo run deploy --filter=backend",
     "deploy:frontend": "turbo run export --filter=dashboard",
     "deploy": "pnpm deploy:backend && pnpm deploy:frontend"

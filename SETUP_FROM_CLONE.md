@@ -2,6 +2,8 @@
 
 This document describes everything required to clone this repository on a new machine, run the full stack locally, and load the same demo data shown in the dashboard today.
 
+**Automated setup:** In Cursor, invoke the **odyssey-local-setup** skill (`.cursor/skills/odyssey-local-setup/SKILL.md`) or run `pnpm setup:local`. The skill handles install, database, seed, contract generation, verification, and starting dev servers—with automated troubleshooting on failure.
+
 **Last verified:** 2026-05-30 (against `pnpm seed`, `pnpm gen:contract`, and live API responses on port 8787).
 
 ---

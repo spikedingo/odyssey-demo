@@ -26,6 +26,25 @@ Drizzle schema → drizzle-zod → Hono OpenAPI → openapi.json → Orval → p
 
 ## Quick Start
 
+### One-command setup (Cursor)
+
+After clone, in Cursor chat:
+
+> **Use odyssey-local-setup skill**
+
+Or run the setup script directly:
+
+```bash
+pnpm setup:local    # install → db → migrate → seed → gen:contract
+pnpm verify:local   # verify artifacts + seed data
+```
+
+The skill also starts dev servers and runs API smoke tests. See `.cursor/skills/odyssey-local-setup/SKILL.md`.
+
+Manual step-by-step guide: [SETUP_FROM_CLONE.md](SETUP_FROM_CLONE.md)
+
+### Manual setup
+
 ```bash
 pnpm install
 cp services/backend/.env.example services/backend/.env
@@ -53,6 +72,9 @@ Open http://localhost:8081 (Expo web) — navigate via sidebar to Home, Orders, 
 | `pnpm db:migrate` | Apply Drizzle migrations |
 | `pnpm db:setup-test` | Create `odyssey_test` database |
 | `pnpm seed` | Idempotent seed (20 orders, 8 customers, 12 menu items) |
+| `pnpm setup:local` | Full post-clone bootstrap (see ops skill) |
+| `pnpm verify:local` | Verify artifacts and seed data |
+| `pnpm reset:local` | Reset to fresh-clone artifact state |
 | `pnpm lint` | ESLint across workspace |
 | `pnpm typecheck` | TypeScript check all packages |
 | `pnpm test` | Backend Vitest + frontend Jest |
