@@ -4,9 +4,23 @@ Fullstack restaurant operations product — POS ordering, staff dashboard, and b
 
 **Repository:** https://github.com/spikedingo/odyssey-demo
 
-![POS Order Terminal on iPad — Sakura Garden tablet layout](docs/screenshots/pos-tablet-ipad.png)
+## Screenshots
 
-*POS Order Terminal (`/`) on iPad — responsive tablet layout with category tabs, menu grid, and cart sidebar.*
+### Staff dashboard (Web)
+
+![Home — KPIs, recent orders, and popular items](docs/screenshots/dashboard-home.png)
+
+*Home (`/home`) — today's overview, recent orders table, and popular items.*
+
+![Menu — categories and item cards](docs/screenshots/dashboard-menu.png)
+
+*Menu (`/menu`) — manage categories and items with availability badges and edit/delete actions.*
+
+### Order terminal (tablet)
+
+![POS on iPad — Sakura Garden tablet layout](docs/screenshots/pos-tablet-ipad.png)
+
+*POS (`/`) on iPad — category tabs, menu grid, and cart sidebar.*
 
 ---
 
