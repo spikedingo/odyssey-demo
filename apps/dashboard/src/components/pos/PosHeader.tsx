@@ -1,7 +1,8 @@
 import type { OrderType } from '@odyssey/types';
 import { ORDER_TYPE_LABELS } from '@odyssey/types';
 import { fontFamily, OdysseyIcon } from '@odyssey/ui';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useBreakpoint } from '@odyssey/ui';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 type PosHeaderProps = {
   restaurantName: string;
@@ -18,8 +19,44 @@ export function PosHeader({
   deliveryAvailable,
   onOrderTypeChange,
 }: PosHeaderProps) {
+  const { isPhone } = useBreakpoint();
+
+  const segmentControl = (
+    <View style={styles.segmentGroup}>
+      <Text style={styles.segmentLabel}>Type</Text>
+      <View style={styles.segmentRow}>
+        {ORDER_TYPES.map((type) => {
+          const disabled = type === 'delivery' && !deliveryAvailable;
+          return (
+            <Pressable
+              key={type}
+              disabled={disabled}
+              style={[
+                styles.segment,
+                orderType === type && styles.segmentActive,
+                disabled && styles.segmentDisabled,
+                isPhone && styles.segmentPhone,
+              ]}
+              onPress={() => onOrderTypeChange(type)}
+            >
+              <Text
+                style={[
+                  styles.segmentText,
+                  orderType === type && styles.segmentTextActive,
+                  disabled && styles.segmentTextDisabled,
+                ]}
+              >
+                {ORDER_TYPE_LABELS[type]}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+
   return (
-    <View style={styles.header}>
+    <View style={[styles.header, isPhone && styles.headerPhone]}>
       <View style={styles.left}>
         <View style={styles.titleRow}>
           <OdysseyIcon size={32} />
@@ -28,36 +65,13 @@ export function PosHeader({
         <Text style={styles.subtitle}>Self-Service Ordering</Text>
       </View>
 
-      <View style={styles.segmentGroup}>
-        <Text style={styles.segmentLabel}>Type</Text>
-        <View style={styles.segmentRow}>
-          {ORDER_TYPES.map((type) => {
-            const disabled = type === 'delivery' && !deliveryAvailable;
-            return (
-              <Pressable
-                key={type}
-                disabled={disabled}
-                style={[
-                  styles.segment,
-                  orderType === type && styles.segmentActive,
-                  disabled && styles.segmentDisabled,
-                ]}
-                onPress={() => onOrderTypeChange(type)}
-              >
-                <Text
-                  style={[
-                    styles.segmentText,
-                    orderType === type && styles.segmentTextActive,
-                    disabled && styles.segmentTextDisabled,
-                  ]}
-                >
-                  {ORDER_TYPE_LABELS[type]}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
-      </View>
+      {isPhone ? (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {segmentControl}
+        </ScrollView>
+      ) : (
+        segmentControl
+      )}
     </View>
   );
 }
@@ -79,6 +93,8 @@ const styles = StyleSheet.create({
   segmentGroup: { gap: 4 },
   segmentLabel: { fontFamily: fontFamily.sansMedium, fontSize: 11, color: '#6b6560', textTransform: 'uppercase' },
   segmentRow: { flexDirection: 'row', gap: 6 },
+  headerPhone: { flexDirection: 'column', alignItems: 'stretch' },
+  segmentPhone: { minHeight: 44, justifyContent: 'center' },
   segment: {
     paddingHorizontal: 12,
     paddingVertical: 8,

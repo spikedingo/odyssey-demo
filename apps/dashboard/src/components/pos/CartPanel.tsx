@@ -1,7 +1,7 @@
 import type { OrderType } from '@odyssey/types';
 import { formatCents } from '@odyssey/shared';
 import { Button, EmptyState, fontFamily, Input } from '@odyssey/ui';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 
 import { CartLineItem } from '@/components/pos/CartLineItem';
 import type { CartLine } from '@/hooks/usePosCart';
@@ -16,6 +16,7 @@ type CartPanelProps = {
   tableNumber: string;
   pickupName: string;
   notes: string;
+  layout?: 'desktop' | 'tablet' | 'sheet';
   onTableNumberChange: (value: string) => void;
   onPickupNameChange: (value: string) => void;
   onNotesChange: (value: string) => void;
@@ -36,6 +37,7 @@ export function CartPanel({
   tableNumber,
   pickupName,
   notes,
+  layout = 'desktop',
   onTableNumberChange,
   onPickupNameChange,
   onNotesChange,
@@ -46,12 +48,18 @@ export function CartPanel({
   onCheckout,
 }: CartPanelProps) {
   const canCheckout = serviceOpen && lines.length > 0;
+  const isSheet = layout === 'sheet';
+
+  const panelStyle: ViewStyle[] = [styles.panel];
+  if (layout === 'desktop') panelStyle.push(styles.panelDesktop);
+  if (layout === 'tablet') panelStyle.push(styles.panelTablet);
+  if (isSheet) panelStyle.push(styles.panelSheet);
 
   return (
-    <View style={styles.panel}>
-      <Text style={styles.heading}>Cart ({itemCount})</Text>
+    <View style={panelStyle}>
+      {!isSheet ? <Text style={styles.heading}>Cart ({itemCount})</Text> : null}
 
-      <ScrollView style={styles.lines}>
+      <ScrollView style={[styles.lines, isSheet && styles.linesSheet]} keyboardShouldPersistTaps="handled">
         {lines.length === 0 ? (
           <EmptyState heading="Cart is empty" subtext="Tap menu items to add them here" />
         ) : (
@@ -78,24 +86,18 @@ export function CartPanel({
         ) : (
           <Input
             label="Pickup name"
-            placeholder="Your name"
+            placeholder="Name for pickup"
             value={pickupName}
             onChangeText={onPickupNameChange}
           />
         )}
-
-        <Input
-          label="Notes (optional)"
-          placeholder="Special instructions"
-          value={notes}
-          onChangeText={onNotesChange}
-        />
+        <Input label="Notes" placeholder="Special requests" value={notes} onChangeText={onNotesChange} />
       </View>
 
       <View style={styles.footer}>
         <Text style={styles.subtotal}>Subtotal: {formatCents(subtotalCents)}</Text>
         <View style={styles.actions}>
-          <Button disabled={lines.length === 0} size="lg" variant="ghost" onPress={onClear}>
+          <Button disabled={lines.length === 0} variant="ghost" onPress={onClear}>
             Clear
           </Button>
           <Button
@@ -114,15 +116,25 @@ export function CartPanel({
 }
 
 const styles = StyleSheet.create({
-  panel: {
+  panel: { gap: 12 },
+  panelDesktop: {
     width: 380,
     borderLeftWidth: 1,
     borderLeftColor: '#e8e4df',
     paddingLeft: 16,
-    gap: 12,
   },
+  panelTablet: {
+    width: '38%',
+    maxWidth: 360,
+    minWidth: 280,
+    borderLeftWidth: 1,
+    borderLeftColor: '#e8e4df',
+    paddingLeft: 16,
+  },
+  panelSheet: { width: '100%', paddingLeft: 0, borderLeftWidth: 0 },
   heading: { fontFamily: fontFamily.sansBold, fontSize: 22, color: '#1a1816' },
   lines: { flex: 1, maxHeight: 320 },
+  linesSheet: { maxHeight: 360 },
   meta: { gap: 10 },
   footer: { gap: 10, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#e8e4df' },
   subtotal: { fontFamily: fontFamily.sansBold, fontSize: 20, color: '#1a1816' },

@@ -36,6 +36,18 @@ export default function CustomerDetailPage() {
       <View style={{ marginTop: 16, width: '100%' }}>
         <Text style={{ fontWeight: '600', marginBottom: 12 }}>Recent Orders</Text>
         <DataTable
+            variant="auto"
+            cardRender={(row) => (
+              <View style={{ gap: 4 }}>
+                <Text style={{ fontWeight: '600' }}>Order #{row.id}</Text>
+                <Badge
+                  label={ORDER_STATUS_LABELS[row.status as OrderStatus]}
+                  orderStatus={row.status as OrderStatus}
+                  variant="order-status"
+                />
+                <Text>{formatCents(row.total_cents)}</Text>
+              </View>
+            )}
             columns={[
               { key: 'id', header: '#', render: (row) => <Text>#{row.id}</Text> },
               {

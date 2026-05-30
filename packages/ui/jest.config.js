@@ -1,7 +1,18 @@
+/** @type {import('jest').Config} */
 module.exports = {
-  preset: 'jest-expo',
-  transformIgnorePatterns: [
-    'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|react-native-svg|lucide-react-native)',
-  ],
-  testMatch: ['**/__tests__/**/*.test.ts?(x)'],
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src/__tests__'],
+  testMatch: ['**/breakpoint.test.ts'],
+  transform: {
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          module: 'commonjs',
+          esModuleInterop: true,
+        },
+      },
+    ],
+  },
+  moduleFileExtensions: ['ts', 'js'],
 };

@@ -2,7 +2,8 @@
   "name": "odyssey-restaurant",
   "private": true,
   "scripts": {
-    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "dev:dashboard": "turbo run dev:web --filter=dashboard",
+    "dev:dashboard:native": "turbo run dev --filter=dashboard",
     "dev:backend": "turbo run dev --filter=backend",
     "gen:contract": "turbo run build:openapi --filter=backend && pnpm --filter=@odyssey/api-client generate && pnpm --filter=@odyssey/api-client typecheck",
     "lint": "turbo run lint",

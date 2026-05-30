@@ -8,21 +8,24 @@ import { MenuItemImage } from '@/components/MenuItemImage';
 type MenuTileProps = {
   item: ListMenuItems200Item;
   quantity: number;
+  width?: number;
   onAdd: () => void;
 };
 
-const TILE_WIDTH = 180;
+const DEFAULT_TILE_WIDTH = 180;
 
-export function MenuTile({ item, quantity, onAdd }: MenuTileProps) {
+export function MenuTile({ item, quantity, width = DEFAULT_TILE_WIDTH, onAdd }: MenuTileProps) {
+  const imageWidth = Math.max(80, width - 24);
+
   return (
-    <Pressable onPress={onAdd}>
-      <Card style={{ ...styles.card, width: TILE_WIDTH }}>
+    <Pressable onPress={onAdd} style={{ minHeight: 44 }}>
+      <Card style={{ ...styles.card, width }}>
         <MenuItemImage
           borderRadius={8}
           height={100}
           name={item.name}
           url={item.image_url}
-          width={TILE_WIDTH - 24}
+          width={imageWidth}
         />
         <Text numberOfLines={2} style={styles.name}>
           {item.name}

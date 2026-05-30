@@ -18,6 +18,7 @@ import {
   PageHeader,
   Switch,
   TextArea,
+  useBreakpoint,
   useTheme,
   useToast,
 } from '@odyssey/ui';
@@ -31,6 +32,7 @@ import { unwrap } from '@/utils/api';
 export default function MenuPage() {
   const toast = useToast();
   const { theme } = useTheme();
+  const { isPhone, isTablet } = useBreakpoint();
   const mounted = useMounted();
   const categoriesQuery = useListCategories({ query: { enabled: mounted } });
   const menuItemsQuery = useListMenuItems({}, { query: { enabled: mounted } });
@@ -152,9 +154,18 @@ export default function MenuPage() {
         groupedItems.map(({ category, items }) => (
           <View key={category.id} style={styles.section}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{category.name}</Text>
-            <View style={styles.grid}>
+            <View style={[styles.grid, isPhone && styles.gridPhone, isTablet && !isPhone && styles.gridTablet]}>
               {items.map((item) => (
-                <Card key={item.id} style={styles.menuCard}>
+                <Card
+                  key={item.id}
+                  style={
+                    isPhone
+                      ? { ...styles.menuCard, ...styles.menuCardPhone }
+                      : isTablet
+                        ? { ...styles.menuCard, ...styles.menuCardTablet }
+                        : styles.menuCard
+                  }
+                >
                   <MenuItemImage
                     borderRadius={10}
                     dimmed={!item.available}
@@ -247,6 +258,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 16,
   },
+  gridPhone: { flexDirection: 'column' },
+  gridTablet: { gap: 12 },
   menuCard: {
     flexBasis: 260,
     flexGrow: 1,
@@ -254,6 +267,8 @@ const styles = StyleSheet.create({
     padding: 0,
     overflow: 'hidden',
   },
+  menuCardPhone: { flexBasis: '100%', maxWidth: '100%', width: '100%' },
+  menuCardTablet: { flexBasis: '48%', maxWidth: '48%' },
   cardBody: {
     padding: 12,
     gap: 8,

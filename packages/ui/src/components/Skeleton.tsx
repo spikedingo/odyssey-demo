@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, StyleSheet, View, type ViewStyle } from 'react-native';
+import { Animated, Platform, StyleSheet, View, type ViewStyle } from 'react-native';
+
+const SKELETON_USE_NATIVE_DRIVER = Platform.OS === 'web';
 
 import { useTheme } from '../theme/ThemeContext';
 
@@ -18,12 +20,23 @@ export function SkeletonBox({
   useEffect(() => {
     const animation = Animated.loop(
       Animated.sequence([
-        Animated.timing(opacity, { toValue: 1, duration: 800, useNativeDriver: true }),
-        Animated.timing(opacity, { toValue: 0.4, duration: 800, useNativeDriver: true }),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: SKELETON_USE_NATIVE_DRIVER,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.4,
+          duration: 800,
+          useNativeDriver: SKELETON_USE_NATIVE_DRIVER,
+        }),
       ]),
     );
     animation.start();
-    return () => animation.stop();
+    return () => {
+      animation.stop();
+      opacity.stopAnimation();
+    };
   }, [opacity]);
 
   return (

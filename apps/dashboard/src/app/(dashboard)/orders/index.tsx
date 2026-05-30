@@ -27,6 +27,7 @@ import {
   orderStatus,
   PageHeader,
   Select,
+  useBreakpoint,
   useToast,
 } from '@odyssey/ui';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -50,6 +51,7 @@ const ALL_STATUSES: OrderStatus[] = [
 export default function OrdersPage() {
   const router = useRouter();
   const toast = useToast();
+  const { isPhone } = useBreakpoint();
   const mounted = useMounted();
   const params = useLocalSearchParams<{ status?: string; search?: string }>();
 
@@ -159,8 +161,8 @@ export default function OrdersPage() {
     <View style={{ width: '100%' }}>
       <PageHeader actions={<Button onPress={() => setDrawerOpen(true)}>New Order</Button>} title="Orders" />
 
-      <ScrollView horizontal style={{ marginBottom: 12 }}>
-        <View style={styles.filters}>
+      <View style={[styles.filtersWrap, isPhone && styles.filtersWrapPhone]}>
+        <View style={[styles.filters, isPhone && styles.filtersPhone]}>
           {ALL_STATUSES.map((status) => {
             const selected = statusFilter.includes(status);
             const color = orderStatus[status];
@@ -181,7 +183,7 @@ export default function OrdersPage() {
             );
           })}
         </View>
-      </ScrollView>
+      </View>
 
       <Input
         placeholder="Search by customer or order #"
@@ -193,6 +195,26 @@ export default function OrdersPage() {
         <ErrorState message="Failed to load orders" onRetry={() => refetch()} />
       ) : (
         <DataTable<ListOrders200DataItem>
+          variant="auto"
+          cardRender={(row) => (
+            <View style={{ gap: 6 }}>
+              <Text style={{ fontWeight: '600' }}>#{row.id} · {row.customer_name ?? 'Walk-in'}</Text>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+                <Badge
+                  label={ORDER_TYPE_LABELS[row.order_type as OrderType]}
+                  size="sm"
+                  variant="info"
+                />
+                <Badge
+                  label={ORDER_STATUS_LABELS[row.status as OrderStatus]}
+                  orderStatus={row.status as OrderStatus}
+                  variant="order-status"
+                />
+              </View>
+              <Text>{row.item_count} items · {formatCents(row.total_cents)}</Text>
+              <Text style={{ color: '#6b6560', fontSize: 13 }}>{formatDate(row.created_at)}</Text>
+            </View>
+          )}
           columns={[
             { key: 'id', header: '#', flex: 0.4, render: (row) => <Text>#{row.id}</Text> },
             { key: 'customer', header: 'Customer', render: (row) => <Text>{row.customer_name ?? 'Walk-in'}</Text> },
@@ -264,6 +286,7 @@ export default function OrdersPage() {
           ]}
           data={filteredOrders}
           loading={!mounted || isLoading}
+          onRowPress={(row) => router.push(`/orders/${row.id}` as never)}
         />
       )}
 
@@ -337,7 +360,10 @@ export default function OrdersPage() {
 }
 
 const styles = StyleSheet.create({
+  filtersWrap: { marginBottom: 12 },
+  filtersWrapPhone: { overflow: 'hidden' },
   filters: { flexDirection: 'row', gap: 8, paddingBottom: 8 },
+  filtersPhone: { flexWrap: 'wrap' },
   chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, borderWidth: 1 },
   chipLabel: { fontFamily: fontFamily.sansMedium, fontSize: 13 },
   menuRow: { marginBottom: 10 },

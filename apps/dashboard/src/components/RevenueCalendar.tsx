@@ -1,6 +1,6 @@
 import { formatCents } from '@odyssey/shared';
-import { Card, useTheme } from '@odyssey/ui';
-import { StyleSheet, Text, View } from 'react-native';
+import { Card, useBreakpoint, useTheme } from '@odyssey/ui';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const WEEKDAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -52,16 +52,14 @@ function buildCalendarWeeks(dailyRevenue: DailyRevenue[]): (DailyRevenue | null)
 
 export function RevenueCalendar({ dailyRevenue }: RevenueCalendarProps) {
   const { theme } = useTheme();
+  const { isPhone } = useBreakpoint();
   const todayKey = new Date().toISOString().slice(0, 10);
   const weeks = buildCalendarWeeks(dailyRevenue);
   const maxRevenue = Math.max(...dailyRevenue.map((day) => day.revenue_cents), 1);
   const monthTitle = dailyRevenue[0] ? formatMonthTitle(dailyRevenue[0].date) : '';
 
-  return (
-    <Card style={styles.container}>
-      <Text style={[styles.title, { color: theme.colors.text }]}>Revenue Calendar</Text>
-      <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>{monthTitle}</Text>
-
+  const calendarBody = (
+    <>
       <View style={styles.weekdayRow}>
         {WEEKDAY_LABELS.map((label) => (
           <View key={label} style={styles.weekdayCell}>
@@ -87,6 +85,7 @@ export function RevenueCalendar({ dailyRevenue }: RevenueCalendarProps) {
                 key={day.date}
                 style={[
                   styles.dayCell,
+                  isPhone && styles.dayCellPhone,
                   {
                     backgroundColor: heat > 0 ? `rgba(34, 139, 90, ${heat})` : theme.colors.background,
                     borderColor: isToday ? theme.colors.primary : theme.colors.border,
@@ -112,6 +111,21 @@ export function RevenueCalendar({ dailyRevenue }: RevenueCalendarProps) {
           })}
         </View>
       ))}
+    </>
+  );
+
+  return (
+    <Card style={styles.container}>
+      <Text style={[styles.title, { color: theme.colors.text }]}>Revenue Calendar</Text>
+      <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>{monthTitle}</Text>
+
+      {isPhone ? (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.calendarScrollInner}>{calendarBody}</View>
+        </ScrollView>
+      ) : (
+        calendarBody
+      )}
     </Card>
   );
 }
@@ -147,6 +161,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     gap: 8,
   },
+  calendarScrollInner: { minWidth: 560 },
   dayCell: {
     flex: 1,
     minHeight: 72,
@@ -154,6 +169,7 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'space-between',
   },
+  dayCellPhone: { minWidth: 72, flex: 0 },
   dayNumber: {
     fontSize: 14,
     fontWeight: '600',

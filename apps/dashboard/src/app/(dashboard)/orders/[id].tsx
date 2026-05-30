@@ -10,6 +10,7 @@ import {
   Modal,
   PageHeader,
   SkeletonCard,
+  useBreakpoint,
   useToast,
 } from '@odyssey/ui';
 import { useLocalSearchParams } from 'expo-router';
@@ -24,6 +25,7 @@ export default function OrderDetailPage() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const orderId = Number(id);
   const toast = useToast();
+  const { isPhone } = useBreakpoint();
   const mounted = useMounted();
   const [confirmStatus, setConfirmStatus] = useState<OrderStatus | null>(null);
 
@@ -60,24 +62,24 @@ export default function OrderDetailPage() {
       <PageHeader breadcrumb="Orders" subtitle={`Placed ${formatDate(data.created_at)}`} title={`Order #${data.id}`} />
 
       <Card>
-        <View style={styles.row}>
+        <View style={[styles.row, isPhone && styles.rowPhone]}>
           <Text style={styles.label}>Status</Text>
           <Badge label={ORDER_STATUS_LABELS[status]} orderStatus={status} variant="order-status" />
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, isPhone && styles.rowPhone]}>
           <Text style={styles.label}>Type</Text>
           <Badge label={ORDER_TYPE_LABELS[data.order_type as OrderType]} variant="info" />
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, isPhone && styles.rowPhone]}>
           <Text style={styles.label}>Customer</Text>
           <Text>{data.customer_name ?? 'Walk-in'}</Text>
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, isPhone && styles.rowPhone]}>
           <Text style={styles.label}>Total</Text>
           <Text>{formatCents(data.total_cents)}</Text>
         </View>
         {data.notes ? (
-          <View style={styles.row}>
+          <View style={[styles.row, isPhone && styles.rowPhone]}>
             <Text style={styles.label}>Notes</Text>
             <Text>{data.notes}</Text>
           </View>
@@ -137,7 +139,8 @@ export default function OrderDetailPage() {
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8 },
+  row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8, gap: 8 },
+  rowPhone: { flexDirection: 'column', alignItems: 'flex-start' },
   label: { fontWeight: '600' },
   sectionTitle: { fontSize: 16, fontWeight: '600', marginBottom: 8 },
   itemRow: { paddingVertical: 8 },

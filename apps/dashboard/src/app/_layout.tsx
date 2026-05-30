@@ -6,13 +6,14 @@ import {
   useFonts,
 } from '@expo-google-fonts/inter';
 import { configureApiClient } from '@odyssey/api-client';
-import { DensityProvider, ThemeProvider, ToastProvider } from '@odyssey/ui';
+import { DensityProvider, ResponsiveProvider, ThemeProvider, ToastProvider } from '@odyssey/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import * as Font from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 configureApiClient({
   baseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? 'http://localhost:8787',
@@ -60,15 +61,19 @@ export default function RootLayout() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <DensityProvider>
-          <ToastProvider>
-            <StatusBar style="auto" />
-            <Stack screenOptions={{ headerShown: false }} />
-          </ToastProvider>
-        </DensityProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <ResponsiveProvider>
+            <DensityProvider>
+              <ToastProvider>
+                <StatusBar style="auto" />
+                <Stack screenOptions={{ headerShown: false }} />
+              </ToastProvider>
+            </DensityProvider>
+          </ResponsiveProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </SafeAreaProvider>
   );
 }

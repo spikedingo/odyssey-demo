@@ -5,6 +5,8 @@ export * from './tokens/layout';
 export * from './theme/themes';
 export * from './theme/ThemeContext';
 export * from './density/DensityContext';
+export * from './layout/getBreakpoint';
+export * from './layout/ResponsiveContext';
 export * from './components/Button';
 export * from './components/Input';
 export * from './components/TextArea';

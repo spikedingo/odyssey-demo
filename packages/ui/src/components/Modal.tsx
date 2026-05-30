@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Modal as RNModal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { useDensity } from '../density/DensityContext';
+import { useBreakpoint } from '../layout/ResponsiveContext';
 import { useTheme } from '../theme/ThemeContext';
 import { fontFamily, fontSize } from '../tokens/typography';
 
@@ -20,18 +21,22 @@ const sizeMap = { sm: 360, md: 480, lg: 640 };
 export function Modal({ open, onClose, title, size = 'md', children, footer }: ModalProps) {
   const { theme } = useTheme();
   const { spacing } = useDensity();
+  const { isPhone } = useBreakpoint();
 
   return (
     <RNModal animationType="fade" transparent visible={open} onRequestClose={onClose}>
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, isPhone && styles.overlayPhone]}>
         <View
           style={[
             styles.content,
             theme.shadows.lg,
+            isPhone && styles.contentPhone,
             {
               backgroundColor: theme.colors.surfaceElevated,
               borderColor: theme.colors.border,
-              maxWidth: sizeMap[size],
+              maxWidth: isPhone ? undefined : sizeMap[size],
+              width: isPhone ? '92%' : '100%',
+              maxHeight: isPhone ? '90%' : undefined,
               padding: spacing(4),
             },
           ]}
@@ -58,11 +63,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 24,
   },
+  overlayPhone: { padding: 16 },
   content: {
     width: '100%',
     borderRadius: 12,
     borderWidth: 1,
   },
+  contentPhone: {},
   header: {
     flexDirection: 'row',
     alignItems: 'center',

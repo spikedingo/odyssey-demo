@@ -5,9 +5,11 @@ import {
 } from '@odyssey/api-client';
 import type { GetSettings200, ListCategories200Item, ListMenuItems200Item } from '@odyssey/api-client';
 import type { OrderType } from '@odyssey/types';
-import { ErrorState, SkeletonCard } from '@odyssey/ui';
+import { formatCents } from '@odyssey/shared';
+import { Drawer, ErrorState, SkeletonCard, useBreakpoint } from '@odyssey/ui';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CartPanel } from '@/components/pos/CartPanel';
 import { CategoryTabs } from '@/components/pos/CategoryTabs';
@@ -22,6 +24,9 @@ import { unwrap } from '@/utils/api';
 
 export function PosTerminalScreen({ standalone = false }: { standalone?: boolean }) {
   const mounted = useMounted();
+  const { isPhone, isTablet, isDesktop, contentPadding } = useBreakpoint();
+  const insets = useSafeAreaInsets();
+  const [cartOpen, setCartOpen] = useState(false);
 
   const settingsQuery = useGetSettings({ query: { enabled: mounted, refetchOnMount: 'always' } });
   const categoriesQuery = useListCategories({ query: { enabled: mounted, refetchOnMount: 'always' } });
@@ -43,6 +48,8 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
 
   const cart = usePosCart(menuItems);
   const { submitOrder, isSubmitting } = usePosOrderSubmit();
+
+  const menuColumns = isPhone ? 2 : isTablet ? 3 : 4;
 
   const sortedCategories = useMemo(
     () => [...categories].sort((a, b) => a.sort_order - b.sort_order),
@@ -106,12 +113,33 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
     if (!order) return;
 
     setSuccessOrderId(order.id);
+    setCartOpen(false);
   };
 
   const isLoading =
     !mounted || settingsQuery.isLoading || categoriesQuery.isLoading || menuQuery.isLoading;
   const isError = settingsQuery.isError || categoriesQuery.isError || menuQuery.isError;
   const serviceOpen = settings?.service_available ?? true;
+
+  const cartPanelProps = {
+    isSubmitting,
+    itemCount: cart.itemCount,
+    lines: cart.lines,
+    notes,
+    orderType,
+    pickupName,
+    serviceOpen,
+    subtotalCents: cart.subtotalCents,
+    tableNumber,
+    onCheckout: () => void handleCheckout(),
+    onClear: cart.clearCart,
+    onDecrement: cart.decrement,
+    onIncrement: cart.increment,
+    onNotesChange: setNotes,
+    onPickupNameChange: setPickupName,
+    onRemove: cart.removeItem,
+    onTableNumberChange: setTableNumber,
+  };
 
   if (isLoading) {
     return <SkeletonCard />;
@@ -131,7 +159,18 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
   }
 
   return (
-    <View style={[styles.screen, standalone ? styles.screenStandalone : styles.screenEmbedded]}>
+    <View
+      style={[
+        styles.screen,
+        standalone ? styles.screenStandalone : styles.screenEmbedded,
+        {
+          padding: contentPadding,
+          paddingTop: contentPadding + (standalone ? insets.top : 0),
+          paddingBottom: isPhone ? 88 + insets.bottom : contentPadding,
+          minHeight: Platform.OS === 'web' ? ('100dvh' as never) : '100%',
+        },
+      ]}
+    >
       <PosHeader
         deliveryAvailable={settings?.delivery_available ?? true}
         orderType={orderType}
@@ -145,7 +184,7 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
         </View>
       ) : null}
 
-      <View style={styles.body}>
+      <View style={[styles.body, isPhone && styles.bodyPhone, isTablet && !isDesktop && styles.bodyTablet]}>
         <View style={styles.menuArea}>
           <View style={styles.categoryBar}>
             <CategoryTabs
@@ -157,6 +196,7 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
           <View style={styles.menuGridWrap}>
             <MenuGrid
               catalogEmpty={catalogEmpty}
+              columns={menuColumns}
               items={categoryItems}
               quantities={quantities}
               onAddItem={cart.addItem}
@@ -164,26 +204,32 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
           </View>
         </View>
 
-        <CartPanel
-          isSubmitting={isSubmitting}
-          itemCount={cart.itemCount}
-          lines={cart.lines}
-          notes={notes}
-          orderType={orderType}
-          pickupName={pickupName}
-          serviceOpen={serviceOpen}
-          subtotalCents={cart.subtotalCents}
-          tableNumber={tableNumber}
-          onCheckout={() => void handleCheckout()}
-          onClear={cart.clearCart}
-          onDecrement={cart.decrement}
-          onIncrement={cart.increment}
-          onNotesChange={setNotes}
-          onPickupNameChange={setPickupName}
-          onRemove={cart.removeItem}
-          onTableNumberChange={setTableNumber}
-        />
+        {!isPhone ? (
+          <CartPanel layout={isTablet ? 'tablet' : 'desktop'} {...cartPanelProps} />
+        ) : null}
       </View>
+
+      {isPhone ? (
+        <>
+          <Pressable
+            style={[
+              styles.fab,
+              {
+                bottom: 16 + insets.bottom,
+                right: 16 + insets.right,
+              },
+            ]}
+            onPress={() => setCartOpen(true)}
+          >
+            <Text style={styles.fabText}>
+              Cart ({cart.itemCount}) · {formatCents(cart.subtotalCents)}
+            </Text>
+          </Pressable>
+          <Drawer open={cartOpen} title={`Cart (${cart.itemCount})`} onClose={() => setCartOpen(false)}>
+            <CartPanel layout="sheet" {...cartPanelProps} />
+          </Drawer>
+        </>
+      ) : null}
 
       <OrderSuccessOverlay orderId={successOrderId} onDismiss={handleSuccessDismiss} />
     </View>
@@ -193,15 +239,30 @@ export function PosTerminalScreen({ standalone = false }: { standalone?: boolean
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 16,
-    minHeight: '100%',
     backgroundColor: '#faf9f7',
   },
   screenStandalone: {},
   screenEmbedded: { margin: -24 },
   banner: { marginTop: 12, marginBottom: 4 },
   body: { flex: 1, flexDirection: 'row', gap: 16, marginTop: 12, minHeight: 480 },
+  bodyPhone: { flexDirection: 'column', minHeight: 0 },
+  bodyTablet: { minHeight: 400 },
   menuArea: { flex: 1, minWidth: 0, flexDirection: 'column' },
   categoryBar: { flexShrink: 0 },
   menuGridWrap: { flex: 1, minHeight: 0 },
+  fab: {
+    position: 'absolute',
+    backgroundColor: '#2d4a3e',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderRadius: 999,
+    minHeight: 48,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  fabText: { color: '#fff', fontWeight: '700', fontSize: 15 },
 });

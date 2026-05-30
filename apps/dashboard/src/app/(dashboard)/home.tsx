@@ -11,6 +11,7 @@ import {
   PageHeader,
   SkeletonCard,
   TableSkeleton,
+  useBreakpoint,
   useTheme,
 } from '@odyssey/ui';
 import { StyleSheet, Text, View } from 'react-native';
@@ -30,6 +31,7 @@ function trend(current: number, previous: number): { trend: 'up' | 'down' | 'neu
 
 export default function HomePage() {
   const { theme } = useTheme();
+  const { isPhone } = useBreakpoint();
   const mounted = useMounted();
   const { data: response, isLoading, isError, refetch } = useGetHomeSummary({
     query: { enabled: mounted },
@@ -55,7 +57,7 @@ export default function HomePage() {
     );
   }
 
-  if (mounted && !isLoading && (isError || !summary)) {
+  if (isError || !summary) {
     return (
       <View>
         <PageHeader title="Home" />
@@ -70,17 +72,17 @@ export default function HomePage() {
   return (
     <View>
       <PageHeader title="Home" subtitle="Today's overview" />
-      <View style={styles.kpiGrid}>
-        <View style={styles.kpiItem}>
+      <View style={[styles.kpiGrid, isPhone && styles.kpiGridPhone]}>
+        <View style={[styles.kpiItem, isPhone && styles.kpiItemPhone]}>
           <KPICard label="Orders Today" trend={ordersTrend.trend} trendLabel={ordersTrend.label} value={String(summary.total_orders_today)} />
         </View>
-        <View style={styles.kpiItem}>
+        <View style={[styles.kpiItem, isPhone && styles.kpiItemPhone]}>
           <KPICard label="Revenue Today" trend={revenueTrend.trend} trendLabel={revenueTrend.label} value={formatCents(summary.revenue_today_cents)} />
         </View>
-        <View style={styles.kpiItem}>
+        <View style={[styles.kpiItem, isPhone && styles.kpiItemPhone]}>
           <KPICard label="Pending Orders" style={styles.kpiCard} value={String(summary.pending_orders)} />
         </View>
-        <View style={styles.kpiItem}>
+        <View style={[styles.kpiItem, isPhone && styles.kpiItemPhone]}>
           {summary.popular_items[0] ? (
             <Card style={styles.kpiCard}>
               <Text style={[styles.kpiLabel, { color: theme.colors.textSecondary }]}>Top Item</Text>
@@ -101,6 +103,18 @@ export default function HomePage() {
         <View style={styles.tableSection}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Recent Orders</Text>
           <DataTable
+              variant="auto"
+              cardRender={(row) => (
+                <View style={{ gap: 4 }}>
+                  <Text style={{ fontWeight: '600' }}>#{row.id} · {row.customer_name ?? 'Walk-in'}</Text>
+                  <Badge
+                    label={ORDER_STATUS_LABELS[row.status as OrderStatus]}
+                    orderStatus={row.status as OrderStatus}
+                    variant="order-status"
+                  />
+                  <Text>{formatCents(row.total_cents)}</Text>
+                </View>
+              )}
               columns={[
                 { key: 'id', header: '#', flex: 0.5, render: (row) => <Text>#{row.id}</Text> },
                 { key: 'customer', header: 'Customer', render: (row) => <Text>{row.customer_name ?? 'Walk-in'}</Text> },
@@ -146,7 +160,9 @@ export default function HomePage() {
 
 const styles = StyleSheet.create({
   kpiGrid: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'stretch', gap: 16, marginBottom: 24 },
+  kpiGridPhone: { flexDirection: 'column' },
   kpiItem: { flexBasis: '48%', flexGrow: 1, flexDirection: 'column' },
+  kpiItemPhone: { flexBasis: '100%', width: '100%' },
   kpiCard: { flex: 1 },
   split: { flexDirection: 'row', gap: 16, flexWrap: 'wrap', width: '100%' },
   tableSection: { flex: 2, minWidth: 320, width: '100%' },

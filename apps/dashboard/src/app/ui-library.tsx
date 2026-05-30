@@ -16,15 +16,18 @@ import {
   primary,
   neutral,
   spacing,
+  useBreakpoint,
   useDensity,
   useTheme,
   useToast,
+  breakpoints,
 } from '@odyssey/ui';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 function UILibraryContent() {
   const { theme, toggleMode, mode } = useTheme();
   const { density, setDensity } = useDensity();
+  const { width, breakpoint, isPhone, isTablet, isDesktop, contentPadding } = useBreakpoint();
   const toast = useToast();
 
   return (
@@ -52,6 +55,19 @@ function UILibraryContent() {
         <Text style={{ fontSize: 30, color: theme.colors.text }}>Heading 3xl</Text>
         <Text style={{ fontSize: 24, color: theme.colors.text }}>Heading 2xl</Text>
         <Text style={{ fontSize: 16, color: theme.colors.textSecondary }}>Body md secondary</Text>
+      </Section>
+
+      <Section title="Breakpoints">
+        <Text style={{ color: theme.colors.text }}>Width: {Math.round(width)}px</Text>
+        <Text style={{ color: theme.colors.text }}>Active: {breakpoint}</Text>
+        <Text style={{ color: theme.colors.textSecondary }}>
+          phone &lt; {breakpoints.tablet}px · tablet &lt; {breakpoints.desktop}px · desktop ≥
+          {breakpoints.desktop}px
+        </Text>
+        <Text style={{ color: theme.colors.textSecondary }}>
+          isPhone={String(isPhone)} isTablet={String(isTablet)} isDesktop={String(isDesktop)} · contentPadding=
+          {contentPadding}px
+        </Text>
       </Section>
 
       <Section title="Spacing">

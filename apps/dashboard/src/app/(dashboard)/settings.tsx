@@ -8,6 +8,7 @@ import {
   PageHeader,
   SkeletonCard,
   Switch,
+  useBreakpoint,
   useToast,
 } from '@odyssey/ui';
 import { useEffect, useState } from 'react';
@@ -18,6 +19,7 @@ import { unwrap } from '@/utils/api';
 
 export default function SettingsPage() {
   const toast = useToast();
+  const { contentPadding } = useBreakpoint();
   const mounted = useMounted();
   const { data: response, isLoading, isError, refetch } = useGetSettings({
     query: { enabled: mounted },
@@ -62,7 +64,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <View>
+    <View style={{ paddingBottom: contentPadding }}>
       <PageHeader title="Settings" subtitle="Restaurant configuration" />
       <Card>
         <Input label="Restaurant Name" value={restaurantName} onChangeText={setRestaurantName} />

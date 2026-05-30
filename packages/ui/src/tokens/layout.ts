@@ -37,10 +37,20 @@ export const shadow = {
   },
 } as const;
 
+export const breakpoints = {
+  tablet: 768,
+  desktop: 1024,
+} as const;
+
+export type Breakpoint = 'phone' | 'tablet' | 'desktop';
+
 export const layout = {
   maxContentWidth: 1280,
   sidebarWidth: 240,
+  sidebarRailWidth: 72,
   contentPadding: 24,
+  contentPaddingPhone: 16,
   cardGap: 16,
   sectionGap: 32,
+  breakpoints,
 } as const;

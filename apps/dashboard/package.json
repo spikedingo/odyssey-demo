@@ -2,14 +2,19 @@
   "name": "dashboard",
   "version": "0.0.1",
   "private": true,
-  "main": "expo-router/entry",
+  "main": "index.js",
   "scripts": {
-    "dev": "expo start --web",
+    "dev": "expo start",
+    "dev:web": "expo start --web",
+    "dev:ios": "expo start --ios",
+    "dev:android": "expo start --android",
     "build": "expo export --platform web",
     "export": "expo export --platform web --output-dir dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "test:e2e": "playwright test",
+    "test:e2e:responsive": "playwright test e2e/responsive.spec.ts"
   },
   "dependencies": {
     "@babel/runtime": "^7.26.0",
@@ -21,8 +26,11 @@
     "@react-native/assets-registry": "0.74.87",
     "@tanstack/react-query": "^5.62.8",
     "expo": "~51.0.39",
+    "expo-constants": "~16.0.2",
     "expo-font": "~12.0.10",
+    "expo-linking": "~6.3.1",
     "expo-router": "~3.5.23",
+    "expo-splash-screen": "~0.27.7",
     "expo-status-bar": "~1.12.1",
     "lucide-react-native": "^0.468.0",
     "react": "18.2.0",
@@ -35,6 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
+    "@playwright/test": "^1.49.1",
     "@testing-library/react-native": "^12.9.0",
     "@types/jest": "^29.5.14",
     "@types/react": "~18.2.79",

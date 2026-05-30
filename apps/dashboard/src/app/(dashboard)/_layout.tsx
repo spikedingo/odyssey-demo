@@ -1,7 +1,7 @@
-import { Sidebar, useTheme, type SidebarItem } from '@odyssey/ui';
-import { Slot, usePathname, useRouter } from 'expo-router';
+import { type SidebarItem } from '@odyssey/ui';
 import { BookOpen, Home, Monitor, Settings, ShoppingBag, Users, UtensilsCrossed } from 'lucide-react-native';
-import { StyleSheet, View } from 'react-native';
+
+import { DashboardShell } from '@/components/DashboardShell';
 
 const navItems: SidebarItem[] = [
   { label: 'Home', href: '/home', icon: Home as SidebarItem['icon'] },
@@ -14,24 +14,5 @@ const navItems: SidebarItem[] = [
 ];
 
 export default function DashboardLayout() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const { theme } = useTheme();
-
-  return (
-    <View style={[styles.shell, { backgroundColor: theme.colors.background }]}>
-      <Sidebar activeHref={pathname} items={navItems} onNavigate={(href) => router.push(href as never)} />
-      <View style={styles.content}>
-        <View style={styles.page}>
-          <Slot />
-        </View>
-      </View>
-    </View>
-  );
+  return <DashboardShell navItems={navItems} />;
 }
-
-const styles = StyleSheet.create({
-  shell: { flex: 1, flexDirection: 'row', minHeight: '100%' },
-  content: { flex: 1, padding: 24, overflow: 'scroll', alignItems: 'stretch' },
-  page: { flex: 1, width: '100%', alignSelf: 'stretch' },
-});

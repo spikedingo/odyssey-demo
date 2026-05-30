@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, type ViewStyle } from 'react-native';
 
+import { useBreakpoint } from '../layout/ResponsiveContext';
 import { useTheme } from '../theme/ThemeContext';
 import { fontFamily, fontSize } from '../tokens/typography';
 import { Card } from './Card';
@@ -40,10 +41,11 @@ export type PageHeaderProps = {
 
 export function PageHeader({ title, subtitle, actions, breadcrumb }: PageHeaderProps) {
   const { theme } = useTheme();
+  const { isPhone } = useBreakpoint();
 
   return (
-    <View style={styles.header}>
-      <View style={{ flex: 1 }}>
+    <View style={[styles.header, isPhone && styles.headerPhone]}>
+      <View style={{ flex: 1, minWidth: 0 }}>
         {breadcrumb ? (
           <Text style={[styles.breadcrumb, { color: theme.colors.textSecondary }]}>{breadcrumb}</Text>
         ) : null}
@@ -52,7 +54,7 @@ export function PageHeader({ title, subtitle, actions, breadcrumb }: PageHeaderP
           <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>{subtitle}</Text>
         ) : null}
       </View>
-      {actions}
+      {actions ? <View style={isPhone ? styles.actionsPhone : undefined}>{actions}</View> : null}
     </View>
   );
 }
@@ -64,6 +66,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 24,
     gap: 16,
+  },
+  headerPhone: {
+    flexDirection: 'column',
+    alignItems: 'stretch',
+  },
+  actionsPhone: {
+    alignSelf: 'flex-start',
+    marginTop: 8,
   },
   breadcrumb: { fontFamily: fontFamily.sans, fontSize: fontSize.sm, marginBottom: 4 },
   title: { fontFamily: fontFamily.sansBold, fontSize: fontSize['2xl'] },

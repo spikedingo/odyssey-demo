@@ -34,6 +34,14 @@ export default function CrmPage() {
         <ErrorState message="Failed to load customers" onRetry={() => refetch()} />
       ) : (
         <DataTable<ListCustomers200DataItem>
+          variant="auto"
+          cardRender={(row) => (
+            <View style={{ gap: 4 }}>
+              <Text style={{ fontWeight: '600', fontSize: 16 }}>{row.name}</Text>
+              <Text style={{ color: '#6b6560' }}>{row.email ?? 'No email'} · {row.phone ?? 'No phone'}</Text>
+              <Text>{row.order_count} orders · {formatCents(row.total_spend_cents)}</Text>
+            </View>
+          )}
           columns={[
             { key: 'name', header: 'Name', render: (row) => <Text>{row.name}</Text> },
             { key: 'email', header: 'Email', render: (row) => <Text>{row.email ?? '—'}</Text> },
