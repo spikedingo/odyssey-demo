@@ -1,5 +1,5 @@
 import { useCreateOrder } from '@odyssey/api-client';
-import type { CreateOrder201 } from '@odyssey/api-client';
+import type { CreateOrder201, CreateOrderBody } from '@odyssey/api-client';
 import type { OrderType } from '@odyssey/types';
 import { useToast } from '@odyssey/ui';
 import { useCallback } from 'react';
@@ -33,20 +33,19 @@ export function usePosOrderSubmit() {
       }
 
       try {
-        const result = await createOrder.mutateAsync({
-          data: {
-            ...(customerId ? { customer_id: customerId } : {}),
-            order_type: orderType,
-            items: lines.map((line) => ({
-              menu_item_id: line.menuItem.id,
-              quantity: line.quantity,
-            })),
-            total_cents: subtotalCents,
-            ...(formatPosNotes(orderType, tableNumber, pickupName, notes)
-              ? { notes: formatPosNotes(orderType, tableNumber, pickupName, notes) }
-              : {}),
-          },
-        });
+        const noteText = formatPosNotes(orderType, tableNumber, pickupName, notes);
+        const body: CreateOrderBody = {
+          order_type: orderType,
+          items: lines.map((line) => ({
+            menu_item_id: line.menuItem.id,
+            quantity: line.quantity,
+          })),
+          total_cents: subtotalCents,
+        };
+        if (customerId) body.customer_id = customerId;
+        if (noteText) body.notes = noteText;
+
+        const result = await createOrder.mutateAsync({ data: body });
 
         const order = unwrap<CreateOrder201>(result);
         if (!order) {

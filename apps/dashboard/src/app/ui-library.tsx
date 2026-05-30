@@ -3,11 +3,16 @@ import {
   Badge,
   Button,
   Card,
+  DataTable,
   DensityProvider,
+  Drawer,
   EmptyState,
   ErrorState,
   Input,
   KPICard,
+  Modal,
+  ResponsiveProvider,
+  Select,
   Switch,
   TextArea,
   ThemeProvider,
@@ -21,14 +26,27 @@ import {
   useTheme,
   useToast,
   breakpoints,
+  shadow,
+  radius,
 } from '@odyssey/ui';
+import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+type DemoRow = { id: number; name: string; status: string };
+
+const DEMO_ROWS: DemoRow[] = [
+  { id: 101, name: 'Alice Chen', status: 'completed' },
+  { id: 102, name: 'Bob Martinez', status: 'pending' },
+];
 
 function UILibraryContent() {
   const { theme, toggleMode, mode } = useTheme();
   const { density, setDensity } = useDensity();
   const { width, breakpoint, isPhone, isTablet, isDesktop, contentPadding } = useBreakpoint();
   const toast = useToast();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectValue, setSelectValue] = useState<'dine_in' | 'takeout' | 'delivery' | null>('dine_in');
 
   return (
     <ScrollView style={[styles.page, { backgroundColor: theme.colors.background }]}>
@@ -55,6 +73,23 @@ function UILibraryContent() {
         <Text style={{ fontSize: 30, color: theme.colors.text }}>Heading 3xl</Text>
         <Text style={{ fontSize: 24, color: theme.colors.text }}>Heading 2xl</Text>
         <Text style={{ fontSize: 16, color: theme.colors.textSecondary }}>Body md secondary</Text>
+      </Section>
+
+      <Section title="Surfaces">
+        <View style={styles.surfaceRow}>
+          <Card elevation="none" padding={3}>
+            <Text style={{ color: theme.colors.text }}>Card (no elevation)</Text>
+          </Card>
+          <Card elevation="sm" padding={3}>
+            <Text style={{ color: theme.colors.text }}>Card sm shadow</Text>
+          </Card>
+          <Card elevation="md" padding={3}>
+            <Text style={{ color: theme.colors.text }}>Card md shadow</Text>
+          </Card>
+        </View>
+        <Text style={{ color: theme.colors.textSecondary, marginTop: 8 }}>
+          Radius lg: {radius.lg}px · shadow.md elevation: {shadow.md.elevation}
+        </Text>
       </Section>
 
       <Section title="Breakpoints">
@@ -92,6 +127,16 @@ function UILibraryContent() {
         <TextArea label="TextArea" placeholder="Notes" value="" onChangeText={() => undefined} />
         <Switch label="Switch on" value onValueChange={() => undefined} />
         <Switch disabled label="Switch off" value={false} onValueChange={() => undefined} />
+        <Select
+          label="Order type"
+          value={selectValue}
+          options={[
+            { label: 'Dine In', value: 'dine_in' },
+            { label: 'Takeout', value: 'takeout' },
+            { label: 'Delivery', value: 'delivery' },
+          ]}
+          onChange={setSelectValue}
+        />
         <WarningBanner message="Inventory running low on salmon." actionLabel="Review" onAction={() => undefined} />
         <View style={styles.row}>
           {(Object.keys(ORDER_STATUS_LABELS) as OrderStatus[]).map((status) => (
@@ -107,6 +152,45 @@ function UILibraryContent() {
         <EmptyState heading="No orders yet" subtext="Create your first order to get started." />
         <ErrorState message="Example error state" onRetry={() => undefined} />
         <Button onPress={() => toast.success('Saved successfully')}>Show Toast</Button>
+      </Section>
+
+      <Section title="Modal, Drawer & DataTable">
+        <View style={styles.row}>
+          <Button variant="secondary" onPress={() => setModalOpen(true)}>Open Modal</Button>
+          <Button variant="secondary" onPress={() => setDrawerOpen(true)}>Open Drawer</Button>
+        </View>
+        <DataTable<DemoRow>
+          variant="auto"
+          data={DEMO_ROWS}
+          emptyHeading="No rows"
+          columns={[
+            { key: 'id', header: '#', render: (row) => <Text>#{row.id}</Text> },
+            { key: 'name', header: 'Name', render: (row) => <Text>{row.name}</Text> },
+            {
+              key: 'status',
+              header: 'Status',
+              render: (row) => (
+                <Badge
+                  label={ORDER_STATUS_LABELS[row.status as OrderStatus]}
+                  orderStatus={row.status as OrderStatus}
+                  variant="order-status"
+                />
+              ),
+            },
+          ]}
+          cardRender={(row) => (
+            <View style={{ gap: 4 }}>
+              <Text style={{ fontWeight: '600' }}>{row.name}</Text>
+              <Text style={{ color: theme.colors.textSecondary }}>Order #{row.id}</Text>
+            </View>
+          )}
+        />
+        <Modal open={modalOpen} title="Example Modal" onClose={() => setModalOpen(false)}>
+          <Text style={{ color: theme.colors.text }}>Modal body with scrollable content area.</Text>
+        </Modal>
+        <Drawer open={drawerOpen} title="Example Drawer" onClose={() => setDrawerOpen(false)}>
+          <Text style={{ color: theme.colors.text }}>Drawer panel for filters, forms, or navigation.</Text>
+        </Drawer>
       </Section>
     </ScrollView>
   );
@@ -125,11 +209,13 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function UILibraryPage() {
   return (
     <ThemeProvider>
-      <DensityProvider>
-        <ToastProvider>
-          <UILibraryContent />
-        </ToastProvider>
-      </DensityProvider>
+      <ResponsiveProvider>
+        <DensityProvider>
+          <ToastProvider>
+            <UILibraryContent />
+          </ToastProvider>
+        </DensityProvider>
+      </ResponsiveProvider>
     </ThemeProvider>
   );
 }
@@ -139,6 +225,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 28, fontWeight: '700', marginBottom: 16 },
   sectionTitle: { fontSize: 18, fontWeight: '600', marginBottom: 12 },
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12, alignItems: 'center' },
+  surfaceRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
   swatches: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   swatch: { width: 64, height: 40, borderRadius: 6, alignItems: 'center', justifyContent: 'center' },
   swatchLabel: { fontSize: 10, color: neutral[0] },

@@ -282,6 +282,25 @@ specs/                   Implementation specs + ADRs
 
 Files not committed (generated at setup): `openapi.json`, `packages/api-client/src/generated/`, `.env` files.
 
+### For reviewers (fresh clone)
+
+This repository **does not commit** generated API artifacts. A clone without running setup will fail `typecheck` / dashboard build until the client is generated.
+
+**Minimum path:**
+
+```bash
+pnpm install
+cp services/backend/.env.example services/backend/.env
+cp apps/dashboard/.env.example apps/dashboard/.env
+pnpm db:up && pnpm db:migrate && pnpm seed
+pnpm gen:contract    # writes openapi.json + packages/api-client/src/generated/
+pnpm verify:local    # optional smoke check
+```
+
+Or use `pnpm setup:local` to run the full bootstrap script.
+
+Confirm `.gitignore` excludes `openapi.json` and `packages/api-client/src/generated/` — they must be regenerated locally, not edited by hand.
+
 ---
 
 ## Architecture Decisions
@@ -305,12 +324,11 @@ Full ADRs in [`specs/06-deployment-delivery/spec.md`](specs/06-deployment-delive
 |---|---|
 | **Native builds** | Dev via Expo Go / `expo start`; no store-signed `expo run:ios` release pipeline in repo |
 | **Authentication** | None (ADR-005) |
-| **Settings — opening hours UI** | Data seeded in backend; no edit UI yet |
-| **CRM — add customer** | Backend API exists; no create entry in list UI |
-| **404 page** | No dedicated `+not-found.tsx` |
+| **Menu categories** | List/display + item CRUD; category create/delete API exists but no dashboard UI |
+| **CRM edit** | Create customer via modal; no inline edit/delete customer UI |
 | **Dark theme polish** | Theme system works; not fully polished on every screen |
 | **Production deploy** | Wrangler + static export scripts exist; not fully verified in production |
-| **Test coverage** | Core flows covered (15 tests); not exhaustive per spec boundary cases |
+| **Test coverage** | Backend order flows + frontend utils/components; not exhaustive per spec boundary cases |
 
 ---
 

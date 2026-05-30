@@ -24,7 +24,7 @@ export function MenuItemRow({
 }: MenuItemRowProps) {
   return (
     <View style={[styles.row, style]}>
-      <MenuItemImage borderRadius={8} dimmed={dimmed} height={size} name={name} url={url} width={size} />
+      <MenuItemImage borderRadius={8} dimmed={dimmed} height={size} name={name} url={url ?? null} width={size} />
       {children ? <View style={styles.content}>{children}</View> : null}
       {trailing}
     </View>

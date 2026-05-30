@@ -20,7 +20,7 @@ export function KPICard({ label, value, trend, trendLabel, style }: KPICardProps
     trend === 'up' ? theme.colors.success : trend === 'down' ? theme.colors.danger : theme.colors.textSecondary;
 
   return (
-    <Card style={style}>
+    <Card {...(style !== undefined ? { style } : {})}>
       <Text style={[styles.label, { color: theme.colors.textSecondary }]}>{label}</Text>
       <Text style={[styles.value, { color: theme.colors.text }]}>{value}</Text>
       {trendLabel ? (
