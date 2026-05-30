@@ -31,7 +31,7 @@ fi
 
 # --- Install ---
 log "Installing dependencies..."
-CI=true pnpm install
+CI=true pnpm install --force
 
 # --- Environment files ---
 log "Creating .env files from examples..."
