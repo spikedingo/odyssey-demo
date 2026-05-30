@@ -1,6 +1,6 @@
 import type { OrderType } from '@odyssey/types';
 import { ORDER_TYPE_LABELS } from '@odyssey/types';
-import { fontFamily } from '@odyssey/ui';
+import { fontFamily, OdysseyIcon } from '@odyssey/ui';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 type PosHeaderProps = {
@@ -21,7 +21,10 @@ export function PosHeader({
   return (
     <View style={styles.header}>
       <View style={styles.left}>
-        <Text style={styles.title}>{restaurantName}</Text>
+        <View style={styles.titleRow}>
+          <OdysseyIcon size={32} />
+          <Text style={styles.title}>{restaurantName}</Text>
+        </View>
         <Text style={styles.subtitle}>Self-Service Ordering</Text>
       </View>
 
@@ -70,6 +73,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e8e4df',
   },
   left: { flex: 1, minWidth: 140 },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   title: { fontFamily: fontFamily.sansBold, fontSize: 20, color: '#1a1816' },
   subtitle: { fontFamily: fontFamily.sans, fontSize: 13, color: '#6b6560', marginTop: 2 },
   segmentGroup: { gap: 4 },

@@ -8,7 +8,7 @@ const navItems: SidebarItem[] = [
   { label: 'Orders', href: '/orders', icon: ShoppingBag as SidebarItem['icon'] },
   { label: 'CRM', href: '/crm', icon: Users as SidebarItem['icon'] },
   { label: 'Menu', href: '/menu', icon: UtensilsCrossed as SidebarItem['icon'] },
-  { label: 'Order Terminal', href: '/pos', icon: Monitor as SidebarItem['icon'] },
+  { label: 'Order Terminal', href: '/', icon: Monitor as SidebarItem['icon'] },
   { label: 'Settings', href: '/settings', icon: Settings as SidebarItem['icon'] },
   { label: 'UI Library', href: '/ui-library', icon: BookOpen as SidebarItem['icon'] },
 ];

@@ -9,6 +9,7 @@ import { neutral } from '../tokens/colors';
 import { fontFamily, fontSize } from '../tokens/typography';
 import { EmptyState } from './EmptyState';
 import { Input } from './Input';
+import { OdysseyIcon } from './OdysseyIcon';
 import { TableSkeleton } from './Skeleton';
 
 export type SidebarItem = {
@@ -78,9 +79,10 @@ export function Sidebar({
         },
       ]}
     >
-      <Text style={[styles.brand, { color: theme.colors.primary, paddingHorizontal: spacing(3) }]}>
-        Odyssey
-      </Text>
+      <View style={[styles.brandRow, { paddingHorizontal: spacing(3) }]}>
+        <OdysseyIcon size={28} />
+        <Text style={[styles.brand, { color: theme.colors.primary }]}>Odyssey</Text>
+      </View>
       {items.map((item) => (
         <NavItem
           key={item.href}
@@ -271,7 +273,8 @@ export function Avatar({ name, size = 'md' }: { name: string; size?: 'sm' | 'md'
 
 const styles = StyleSheet.create({
   sidebar: { borderRightWidth: 1, height: '100%' },
-  brand: { fontFamily: fontFamily.sansBold, fontSize: fontSize.xl, marginBottom: 16 },
+  brandRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 16 },
+  brand: { fontFamily: fontFamily.sansBold, fontSize: fontSize.xl },
   navItem: { flexDirection: 'row', alignItems: 'center', borderRadius: 8, marginHorizontal: 8 },
   tableShell: {
     width: '100%',

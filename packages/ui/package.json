@@ -15,7 +15,8 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-native": ">=0.74"
+    "react-native": ">=0.74",
+    "react-native-svg": ">=15"
   },
   "dependencies": {
     "@odyssey/shared": "workspace:*",
@@ -30,6 +31,7 @@
     "jest-expo": "~51.0.4",
     "react": "18.2.0",
     "react-native": "^0.74.6",
+    "react-native-svg": "15.2.0",
     "react-test-renderer": "^18.3.1"
   }
 }

@@ -20,7 +20,7 @@ import { usePosOrderSubmit } from '@/hooks/usePosOrderSubmit';
 import { useMounted } from '@/hooks/useMounted';
 import { unwrap } from '@/utils/api';
 
-export function PosTerminalScreen() {
+export function PosTerminalScreen({ standalone = false }: { standalone?: boolean }) {
   const mounted = useMounted();
 
   const settingsQuery = useGetSettings({ query: { enabled: mounted, refetchOnMount: 'always' } });
@@ -131,7 +131,7 @@ export function PosTerminalScreen() {
   }
 
   return (
-    <View style={styles.screen}>
+    <View style={[styles.screen, standalone ? styles.screenStandalone : styles.screenEmbedded]}>
       <PosHeader
         deliveryAvailable={settings?.delivery_available ?? true}
         orderType={orderType}
@@ -193,11 +193,12 @@ export function PosTerminalScreen() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    margin: -24,
     padding: 16,
     minHeight: '100%',
     backgroundColor: '#faf9f7',
   },
+  screenStandalone: {},
+  screenEmbedded: { margin: -24 },
   banner: { marginTop: 12, marginBottom: 4 },
   body: { flex: 1, flexDirection: 'row', gap: 16, marginTop: 12, minHeight: 480 },
   menuArea: { flex: 1, minWidth: 0, flexDirection: 'column' },

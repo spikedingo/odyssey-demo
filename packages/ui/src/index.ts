@@ -19,3 +19,4 @@ export * from './components/Toast';
 export * from './components/Skeleton';
 export * from './components/KPICard';
 export * from './components/Navigation';
+export * from './components/OdysseyIcon';

@@ -1,5 +1,5 @@
-import { PosTerminalScreen } from '@/screens/pos/PosTerminalScreen';
+import { Redirect } from 'expo-router';
 
 export default function PosPage() {
-  return <PosTerminalScreen />;
+  return <Redirect href="/" />;
 }
