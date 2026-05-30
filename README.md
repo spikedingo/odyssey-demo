@@ -85,11 +85,11 @@ Drizzle schema → drizzle-zod → Hono OpenAPI → openapi.json → Orval → @
 
 ## Quick Start
 
-### Option A — Cursor Skill (recommended)
+### Option A — Agent Skill (recommended)
 
 This repo includes an ops skill for automated bootstrap and troubleshooting.
 
-After clone, in **Cursor chat**:
+After clone, in **Coding agent chat**:
 
 > **Use odyssey-local-setup skill**
 
