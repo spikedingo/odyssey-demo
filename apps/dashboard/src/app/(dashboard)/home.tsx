@@ -16,6 +16,7 @@ import {
 import { StyleSheet, Text, View } from 'react-native';
 
 import { MenuItemRow } from '@/components/MenuItemRow';
+import { RevenueCalendar } from '@/components/RevenueCalendar';
 import { useMounted } from '@/hooks/useMounted';
 import { unwrap } from '@/utils/api';
 
@@ -47,6 +48,9 @@ export default function HomePage() {
           ))}
         </View>
         <TableSkeleton rows={6} />
+        <View style={styles.calendarSkeleton}>
+          <SkeletonCard />
+        </View>
       </View>
     );
   }
@@ -74,11 +78,11 @@ export default function HomePage() {
           <KPICard label="Revenue Today" trend={revenueTrend.trend} trendLabel={revenueTrend.label} value={formatCents(summary.revenue_today_cents)} />
         </View>
         <View style={styles.kpiItem}>
-          <KPICard label="Pending Orders" value={String(summary.pending_orders)} />
+          <KPICard label="Pending Orders" style={styles.kpiCard} value={String(summary.pending_orders)} />
         </View>
         <View style={styles.kpiItem}>
           {summary.popular_items[0] ? (
-            <Card>
+            <Card style={styles.kpiCard}>
               <Text style={[styles.kpiLabel, { color: theme.colors.textSecondary }]}>Top Item</Text>
               <MenuItemRow name={summary.popular_items[0].name} size={48} style={{ marginTop: 8 }}>
                 <Text style={[styles.kpiValue, { color: theme.colors.text }]}>{summary.popular_items[0].name}</Text>
@@ -88,7 +92,7 @@ export default function HomePage() {
               </MenuItemRow>
             </Card>
           ) : (
-            <KPICard label="Top Item" value="—" />
+            <KPICard label="Top Item" style={styles.kpiCard} value="—" />
           )}
         </View>
       </View>
@@ -116,9 +120,9 @@ export default function HomePage() {
               data={summary.recent_orders}
             />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={styles.sideSection}>
+          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Popular Items</Text>
           <Card>
-            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Popular Items</Text>
             {summary.popular_items.map((item) => (
               <MenuItemRow
                 key={item.name}
@@ -134,15 +138,19 @@ export default function HomePage() {
           </Card>
         </View>
       </View>
+
+      <RevenueCalendar dailyRevenue={summary.daily_revenue} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  kpiGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginBottom: 24 },
-  kpiItem: { flexBasis: '48%', flexGrow: 1 },
+  kpiGrid: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'stretch', gap: 16, marginBottom: 24 },
+  kpiItem: { flexBasis: '48%', flexGrow: 1, flexDirection: 'column' },
+  kpiCard: { flex: 1 },
   split: { flexDirection: 'row', gap: 16, flexWrap: 'wrap', width: '100%' },
   tableSection: { flex: 2, minWidth: 320, width: '100%' },
+  sideSection: { flex: 1, minWidth: 280, width: '100%' },
   sectionTitle: { fontSize: 18, fontWeight: '600', marginBottom: 12 },
   kpiLabel: { fontSize: 14 },
   kpiValue: { fontSize: 20, fontWeight: '700' },
@@ -151,4 +159,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#e6e2dc',
   },
+  calendarSkeleton: { marginTop: 24, minHeight: 320 },
 });

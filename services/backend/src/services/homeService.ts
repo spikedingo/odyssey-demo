@@ -11,6 +11,16 @@ function toIso(date: Date): string {
   return date.toISOString();
 }
 
+function toDateKey(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
+
+function monthRange(date: Date): { monthStart: Date; nextMonthStart: Date } {
+  const monthStart = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1));
+  const nextMonthStart = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1));
+  return { monthStart, nextMonthStart };
+}
+
 export async function getHomeSummary() {
   const now = new Date();
   const todayStart = startOfDayUtc(now);
@@ -83,6 +93,32 @@ export async function getHomeSummary() {
     .orderBy(desc(orders.created_at))
     .limit(10);
 
+  const { monthStart, nextMonthStart } = monthRange(now);
+  const dailyRevenueRows = await db
+    .select({
+      day: sql<string>`to_char(date_trunc('day', ${orders.created_at}), 'YYYY-MM-DD')`,
+      revenue_cents: sql<number>`cast(coalesce(sum(${orders.total_cents}), 0) as int)`,
+    })
+    .from(orders)
+    .where(
+      and(
+        gte(orders.created_at, monthStart),
+        lt(orders.created_at, nextMonthStart),
+        ne(orders.status, 'cancelled'),
+      ),
+    )
+    .groupBy(sql`date_trunc('day', ${orders.created_at})`);
+
+  const revenueByDate = new Map(dailyRevenueRows.map((row) => [row.day, row.revenue_cents]));
+  const daily_revenue: { date: string; revenue_cents: number }[] = [];
+  for (const cursor = new Date(monthStart); cursor < nextMonthStart; cursor.setUTCDate(cursor.getUTCDate() + 1)) {
+    const date = toDateKey(cursor);
+    daily_revenue.push({
+      date,
+      revenue_cents: revenueByDate.get(date) ?? 0,
+    });
+  }
+
   return {
     total_orders_today: todayOrders?.count ?? 0,
     total_orders_yesterday: yesterdayOrders?.count ?? 0,
@@ -102,5 +138,6 @@ export async function getHomeSummary() {
       total_cents: row.total_cents,
       created_at: toIso(row.created_at),
     })),
+    daily_revenue,
   };
 }

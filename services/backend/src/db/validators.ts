@@ -153,6 +153,11 @@ export const CustomersListResponseSchema = z.object({
   limit: z.number().int(),
 });
 
+export const DailyRevenueSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  revenue_cents: z.number().int(),
+});
+
 export const HomeSummarySchema = z.object({
   total_orders_today: z.number().int(),
   total_orders_yesterday: z.number().int(),
@@ -168,6 +173,7 @@ export const HomeSummarySchema = z.object({
     )
     .max(5),
   recent_orders: z.array(OrderSummarySchema).max(10),
+  daily_revenue: z.array(DailyRevenueSchema),
 });
 
 export const HealthResponseSchema = z.object({

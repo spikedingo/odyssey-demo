@@ -183,6 +183,16 @@ describe('getHomeSummary', () => {
     expect(summary.revenue_today_cents).toBeGreaterThanOrEqual(1000);
     expect(summary.revenue_today_cents).toBeLessThan(1600);
   });
+
+  test('returns daily revenue for each day in the current month', async () => {
+    const summary = await getHomeSummary();
+    const now = new Date();
+    const daysInMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).getUTCDate();
+
+    expect(summary.daily_revenue).toHaveLength(daysInMonth);
+    expect(summary.daily_revenue[0]?.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(summary.daily_revenue.every((day) => day.revenue_cents >= 0)).toBe(true);
+  });
 });
 
 describe('ApiError', () => {

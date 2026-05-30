@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, type ViewStyle } from 'react-native';
 
 import { useTheme } from '../theme/ThemeContext';
 import { fontFamily, fontSize } from '../tokens/typography';
@@ -10,15 +10,16 @@ export type KPICardProps = {
   value: string;
   trend?: 'up' | 'down' | 'neutral';
   trendLabel?: string;
+  style?: ViewStyle;
 };
 
-export function KPICard({ label, value, trend, trendLabel }: KPICardProps) {
+export function KPICard({ label, value, trend, trendLabel, style }: KPICardProps) {
   const { theme } = useTheme();
   const trendColor =
     trend === 'up' ? theme.colors.success : trend === 'down' ? theme.colors.danger : theme.colors.textSecondary;
 
   return (
-    <Card>
+    <Card style={style}>
       <Text style={[styles.label, { color: theme.colors.textSecondary }]}>{label}</Text>
       <Text style={[styles.value, { color: theme.colors.text }]}>{value}</Text>
       {trendLabel ? (
